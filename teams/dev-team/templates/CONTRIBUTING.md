@@ -54,17 +54,17 @@ npm run dev                # or: python main.py
 
 ## Review Process
 
-Every PR goes through:
+Every PR goes through an iterative agent review loop before reaching human review:
 
-1. **CI** — Automated checks (lint, test, security audit)
-2. **Codex CLI review** — Iterative automated review until CLEAN
-3. **Reviewer approval** — Code quality + functionality check
-4. **Owner merge** — Product Owner merges in order, resolving any rebase conflicts
+1. **PR proposer** opens a pull request
+2. **Agent review** — An agent team member reviews the PR for correctness, consistency, and quality
+3. **Iterate if needed** — If the reviewer requests changes, the proposer addresses them and returns to step 2. This loop repeats until the agent reviewer approves.
+4. **Human review** — Once agent review is complete (approved with no outstanding changes), the Product Owner reviews and merges
 
-<!--
-  This review process assumes an agent dev team setup.
-  For human-only teams, remove the Codex CLI step.
--->
+Key rules:
+- Never skip the agent review loop — every PR must have at least one complete agent review cycle before human review
+- The agent reviewer must explicitly approve (not just verify) before the PR advances to step 4
+- CI checks (lint, test, security audit) run in parallel with the review process
 
 ## Reporting Issues
 

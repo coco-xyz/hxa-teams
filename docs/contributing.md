@@ -56,9 +56,14 @@ teams/your-team-type/
 
 ### 4. Review Process
 
-- A maintainer will review against the schema spec
-- We may suggest changes to improve consistency with other templates
-- Once approved, your template joins the library
+All PRs follow an iterative agent review loop before human review:
+
+1. **PR submitted** — You open a pull request
+2. **Agent review** — A team agent reviews your PR for schema compliance, consistency, and quality
+3. **Iterate if needed** — If the reviewer requests changes, address them and return to step 2. This loop repeats until the agent reviewer approves.
+4. **Human review** — Once agent review passes, a maintainer reviews and merges
+
+The agent review must result in an explicit approval before advancing to human review.
 
 ## Ideas for New Templates
 
