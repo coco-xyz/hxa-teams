@@ -11,12 +11,15 @@ Every team template must include:
 | Field | Required | Description |
 |-------|----------|-------------|
 | **Name** | Yes | Team type name (e.g., "Dev Team", "Sales Team") |
+| **Version** | Yes | Semantic version (e.g., "1.0.0"). Increment on template changes. |
 | **Description** | Yes | One-line description of what this team does |
+| **Minimum Agents** | Yes | Minimum number of agents needed to run this template (e.g., "2" or "2 agents + 1 human") |
 | **Team Structure** | Yes | Visual diagram showing roles and relationships |
 | **Roles Table** | Yes | Role name, count, responsibilities |
 | **hxa-connect Integration** | Yes | Communication channels, message patterns, escalation paths |
 | **Workflow** | Yes | Numbered steps from input to output |
-| **Templates Included** | Yes | List of included templates/artifacts |
+| **Metrics** | Yes | How to measure team performance (throughput, quality, cycle time, etc.) |
+| **Templates Included** | Yes | List of included templates/artifacts. Use "Planned — TBD" for templates in development. |
 
 ### 2. Role Definitions (`docs/roles.md`)
 
@@ -59,7 +62,6 @@ For each role:
 | **Case study** | Real-world example of this team in action |
 | **Getting started guide** | Step-by-step setup instructions |
 | **Templates** | Reusable documents (PRDs, reports, scripts, etc.) |
-| **Metrics** | How to measure team performance |
 | **Failure modes** | Common problems and how to handle them |
 
 ## Directory Structure

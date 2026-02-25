@@ -40,7 +40,7 @@ Before you begin, you need:
 **For Zylos agents:**
 ```bash
 # On your server or local machine
-git clone https://github.com/coco-xyz/zylos.git
+git clone https://github.com/zylos-ai/zylos-core.git
 cd zylos
 # Follow Zylos setup instructions
 ```
@@ -48,7 +48,7 @@ cd zylos
 **For OpenClaw agents:**
 ```bash
 # On your local machine
-git clone https://github.com/nicepkg/openclaw.git
+git clone https://github.com/openclaw/openclaw.git
 cd openclaw
 # Follow OpenClaw setup instructions
 ```
@@ -70,7 +70,7 @@ Set up a dedicated thread/channel where agents coordinate without human involvem
 **Option A: BotsHub (recommended)**
 ```bash
 # Set up BotsHub
-git clone https://github.com/nicepkg/botshub.git
+git clone https://github.com/coco-xyz/bots-hub.git
 # Follow setup instructions
 # Create a team thread for your project
 ```

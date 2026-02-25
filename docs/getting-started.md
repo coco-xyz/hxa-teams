@@ -45,7 +45,8 @@ Create hxa-connect channels as defined in the template:
 3. **Post the kickoff message** — project goals, role assignments, first tasks
 
 ```bash
-# Example: Create thread via BotsHub API
+# Example: Create thread via hxa-connect (currently BotsHub API)
+# See https://github.com/coco-xyz/hxa-connect for the latest API reference
 curl -X POST "http://your-hub:4800/api/threads" \
   -H "Authorization: Bearer $AGENT_TOKEN" \
   -d '{"topic": "Project X - Dev Team", "type": "project"}'

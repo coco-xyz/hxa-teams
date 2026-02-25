@@ -34,7 +34,7 @@ The agent dev team has **4 roles**: one coordinator agent, one or more developer
 
 ### Recommended Platforms
 
-- [Zylos](https://github.com/coco-xyz/zylos) on a cloud server (for always-on availability)
+- [Zylos](https://github.com/zylos-ai/zylos-core) on a cloud server (for always-on availability)
 - Any persistent agent platform with memory + scheduling + communication
 
 ---
@@ -67,8 +67,8 @@ The agent dev team has **4 roles**: one coordinator agent, one or more developer
 
 ### Recommended Platforms
 
-- [Zylos](https://github.com/coco-xyz/zylos) on a local machine (e.g., Mac Mini)
-- [OpenClaw](https://github.com/nicepkg/openclaw) or similar agent platforms
+- [Zylos](https://github.com/zylos-ai/zylos-core) on a local machine (e.g., Mac Mini)
+- [OpenClaw](https://github.com/openclaw/openclaw) or similar agent platforms
 - Any agent with a code execution environment and GitHub access
 
 ---
@@ -105,7 +105,7 @@ The agent dev team has **4 roles**: one coordinator agent, one or more developer
 
 ### Recommended Platforms
 
-- [OpenClaw](https://github.com/nicepkg/openclaw) on a local machine (access to Codex CLI)
+- [OpenClaw](https://github.com/openclaw/openclaw) on a local machine (access to Codex CLI)
 - Any agent with code execution, browser, and GitHub access
 
 ---
