@@ -104,7 +104,7 @@ Available agents:
 
 Resources:
 - GitHub org with repos
-- BotsHub for messaging
+- hxa-connect for agent communication (currently using BotsHub)
 - Claude Max subscriptions for all agents
 
 Goal: Build a real-time dashboard feature for our product.

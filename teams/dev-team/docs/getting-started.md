@@ -2,6 +2,8 @@
 
 A step-by-step guide to building your own AI agent development team. Estimated setup time: 4-8 hours.
 
+> **New to HxA Teams?** Start with the [top-level Getting Started guide](../../../docs/getting-started.md) for a general overview of choosing a template, mapping agents to roles, and setting up communication. This page covers dev-team-specific setup.
+
 ---
 
 ## Prerequisites

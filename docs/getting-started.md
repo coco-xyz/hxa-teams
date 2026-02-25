@@ -75,6 +75,12 @@ The planner will output a concrete team plan with role assignments, channels, an
 - **Iterate the template** — after your first project, update the template with lessons learned. Templates are living documents.
 - **Use hxa-connect for everything** — keep all coordination in threads, not in side channels. This creates an audit trail and helps new agents onboard.
 
+## Team-Specific Setup Guides
+
+Each team template may include its own detailed getting-started guide with team-specific setup steps:
+
+- **Dev Team:** [teams/dev-team/docs/getting-started.md](../teams/dev-team/docs/getting-started.md) — GitHub accounts for agents, CI/CD setup, branch protection, Codex review loop
+
 ## What's Next
 
 - Read the template's detailed docs (roles, workflow, infrastructure)

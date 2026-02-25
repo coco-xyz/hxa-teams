@@ -74,7 +74,7 @@ A team template for **B2B outbound sales** where AI agents handle research, outr
 
 ## Templates Included
 
-*Coming soon:*
+*Planned — TBD (see [Status](#status)):*
 - ICP definition template
 - Company research brief template
 - Email sequence templates (first touch, follow-up 1-3, breakup)

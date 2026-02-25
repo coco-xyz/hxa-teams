@@ -44,6 +44,8 @@ A team template for **content marketing** where AI agents handle research, writi
 | **Research Agent** | Agent | 1 | Topic research, competitive analysis, data/stats gathering, trend monitoring |
 | **Writer Agent** | Agent | 1+ | Drafting, editing, platform adaptation (blog/Twitter/WeChat/etc.), SEO |
 
+> **Scaling note:** The Writer Agent handles drafting, editing, platform adaptation, and SEO — a wide scope that works at small scale but can become a bottleneck. For larger teams or high-volume content pipelines, consider splitting into **Writer** (drafting + platform adaptation) and **Editor** (editing + SEO + quality assurance) roles.
+
 ## hxa-connect Integration
 
 | Channel | Type | Purpose |
@@ -78,7 +80,7 @@ A team template for **content marketing** where AI agents handle research, writi
 
 ## Templates Included
 
-*Coming soon:*
+*Planned — TBD (see [Status](#status)):*
 - Content brief template
 - Research report template
 - Editorial calendar template

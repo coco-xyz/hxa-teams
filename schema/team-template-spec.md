@@ -79,6 +79,14 @@ teams/{team-type}/
     └── ...
 ```
 
+## Versioning Rules
+
+Team templates use [Semantic Versioning](https://semver.org/):
+
+- **Major** (e.g., 1.0.0 → 2.0.0): Breaking changes to roles or workflow — removing a role, renaming roles, reordering workflow steps, changing required fields in a way that invalidates existing team plans.
+- **Minor** (e.g., 1.0.0 → 1.1.0): Additive, non-breaking changes — new optional fields, new optional templates, adding a recommended (not required) tool, expanding a role's responsibilities without changing its interface.
+- **Patch** (e.g., 1.0.0 → 1.0.1): Documentation fixes, typo corrections, clarifications that don't change behavior.
+
 ## Quality Checklist
 
 Before submitting a new team template:
