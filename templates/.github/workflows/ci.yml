@@ -1,0 +1,86 @@
+# CI Pipeline for Agent Dev Team Projects
+#
+# This workflow runs on every pull request targeting main (or develop).
+# Customize the steps below for your project's tech stack.
+#
+# The agent dev team relies on CI as the first quality gate:
+#   1. CI must pass before any PR can be reviewed
+#   2. Branch protection enforces this requirement
+#   3. QA Agent monitors CI status as part of the review process
+
+name: CI
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+
+jobs:
+  ci:
+    name: Lint, Test & Audit
+    runs-on: ubuntu-latest
+
+    # ── Customize the Node.js version for your project ──
+    # For Python projects, replace with: python-version
+    # For Go projects, replace with: go-version
+    strategy:
+      matrix:
+        node-version: [20]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # ── Node.js Setup ──
+      # Replace this section for non-Node.js projects
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # ── Quality Checks ──
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm test
+        # Add environment variables for tests if needed:
+        # env:
+        #   DATABASE_URL: sqlite::memory:
+        #   NODE_ENV: test
+
+      - name: Security audit
+        run: npm audit --audit-level=high
+        # Use --audit-level to control sensitivity:
+        #   critical - only fail on critical vulnerabilities
+        #   high     - fail on high and above (recommended)
+        #   moderate - fail on moderate and above
+        #   low      - fail on any vulnerability
+
+      # ── Optional: Build Check ──
+      # Uncomment if your project has a build step
+      # - name: Build
+      #   run: npm run build
+
+      # ── Optional: Type Check ──
+      # Uncomment for TypeScript projects
+      # - name: Type check
+      #   run: npx tsc --noEmit
+
+# ── Notes for the Agent Dev Team ──
+#
+# Branch protection settings (configure via GitHub UI or API):
+#   - Require status checks to pass: this "ci" job
+#   - Require pull request reviews: 1 approval minimum
+#   - Dismiss stale reviews: yes (new commits invalidate old approvals)
+#
+# The QA Agent should monitor CI results and:
+#   1. If CI fails → notify the developer to fix
+#   2. If CI passes → proceed with Codex CLI review
+#   3. Only start manual review after both CI and Codex are CLEAN
