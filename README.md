@@ -1,118 +1,119 @@
-# Agent Dev Team
+# HxA Teams
 
-> What if your dev team could run 24/7?
+> Team templates for human × agent collaboration.
 
-A framework for building **AI agent software development teams** — where multiple AI agents work alongside a human product owner to ship real software, in parallel, around the clock.
+HxA Teams is a collection of **ready-to-use team templates** that help AI agents spin up functional teams — dev teams, sales teams, marketing teams, and more. Each template defines roles, workflows, communication patterns, and infrastructure so an agent can read a template and self-organize a working team.
 
-This repository documents the roles, workflow, infrastructure, and templates we use to run an autonomous multi-agent dev team. It's based on a real production setup, not theory.
+This is not a framework or SDK. It's a **knowledge repo** — the onboarding handbook that agents read to understand how teams work.
 
 ---
 
-## The Concept
-
-Instead of one developer prompting one AI assistant, we treat AI agents as **persistent team members** with defined roles, communication channels, and development processes — just like a human team.
+## How It Works
 
 ```
-                    ┌─────────────────────────────────────┐
-                    │        Human Product Owner           │
-                    │   (requirements, final approval)     │
-                    └──────────────┬──────────────────────┘
-                                   │
-                                   │  requirements
-                                   ▼
-                    ┌─────────────────────────────────────┐
-                    │       Coordinator Agent (A)          │
-                    │  (task splitting, architecture,      │
-                    │   coordination, core development)    │
-                    └──────┬──────────────────┬───────────┘
-                           │                  │
-                    assign │ Batch 1   Batch 2│ assign
-                           │                  │
-                    ┌──────▼─────┐     ┌──────▼──────┐
-                    │ Developer  │     │ Coordinator │
-                    │ Agent (B)  │     │ Agent (A)   │
-                    │ (Batch 1)  │     │ (Batch 2)   │
-                    └──────┬─────┘     └──────┬──────┘
-                           │                  │
-                           │  submit PRs      │
-                           ▼                  ▼
-                    ┌─────────────────────────────────────┐
-                    │        QA / Review Agent (C)         │
-                    │  (Codex review loop until CLEAN,     │
-                    │   functional QA, CI maintenance)     │
-                    └──────────────┬──────────────────────┘
-                                   │
-                                   │  approved
-                                   ▼
-                    ┌─────────────────────────────────────┐
-                    │        Human Product Owner           │
-                    │      (final review + merge)          │
-                    └─────────────────────────────────────┘
+┌─────────────────┐     ┌──────────────────┐     ┌──────────────────┐
+│   User Input     │     │     Planner       │     │   Team Template   │
+│                  │────▶│                   │────▶│                   │
+│ - Team type      │     │ Reads template +  │     │ - Roles           │
+│ - Agent count    │     │ inputs, outputs   │     │ - Workflow         │
+│ - Resources      │     │ a team plan       │     │ - Communication   │
+│ - Goals          │     │                   │     │ - Infrastructure   │
+└─────────────────┘     └──────────────────┘     └──────────────────┘
+                                │
+                                ▼
+                        ┌──────────────────┐
+                        │    Team Plan      │
+                        │                   │
+                        │ Agent executes    │
+                        │ autonomously      │
+                        └──────────────────┘
 ```
 
-## Key Principles
+1. **Choose a team type** — dev, sales, marketing, or bring your own
+2. **Provide inputs** — how many agents, what tools/resources are available, what goals to achieve
+3. **Planner generates a team plan** — role assignments, communication channels, workflow steps
+4. **Agent self-leads execution** — the plan is actionable, not theoretical
 
-1. **Parallel Development** — Multiple agents work on different task batches simultaneously, multiplying throughput.
-2. **Automated Review** — Every PR goes through iterative AI review (Codex CLI) until it's CLEAN, then agent QA. Humans only review what's already been vetted.
-3. **Agent Coordination** — One agent acts as coordinator: splitting tasks, assigning batches, and syncing progress across the team.
-4. **Persistent Agents** — Agents have memory, scheduling, and communication capabilities. They don't forget context between sessions.
-5. **PRD-Driven** — All features start with a Product Requirements Document, reviewed and approved before development begins.
+## Team Templates
 
-## Why This Works
+| Template | Status | Description |
+|----------|--------|-------------|
+| [Dev Team](teams/dev-team/) | **Complete** | Software development team with coordinator, developers, and QA |
+| [Sales Team](teams/sales-team/) | Planned | Outbound sales pipeline with research, outreach, and follow-up |
+| [Marketing Team](teams/marketing-team/) | Planned | Content creation pipeline with research, writing, review, and publishing |
 
-| Aspect | Traditional Team | Agent Dev Team |
-|--------|-----------------|----------------|
-| Working hours | 8h/day, business days | 24/7, including weekends |
-| Parallel capacity | Limited by headcount | Scale by adding agent instances |
-| Review turnaround | Hours to days | Minutes (automated Codex loop) |
-| Context switching | Expensive, error-prone | Agents maintain persistent context |
-| Onboarding | Weeks | Configure + provide docs |
-| Cost | Salaries + benefits | AI subscriptions (~$200-400/mo per agent) |
+## Communication: hxa-connect
 
-**Real outcomes from our pilot project (ClawFeed):**
-- Team setup (3 agents + infrastructure) completed in one day
-- CI pipeline, PR templates, contributing docs, and branch protection — all created and merged by agents
-- Codex CLI iterative review achieving CLEAN pass on all PRs
-- Agent-to-agent coordination via dedicated messaging threads
+Every team template is built around [**hxa-connect**](https://github.com/coco-xyz/hxa-connect) as the communication layer. hxa-connect provides:
 
-## Documentation
+- Agent-to-agent messaging
+- Thread-based collaboration
+- Shared artifacts (documents, code, data)
 
-| Document | Description |
-|----------|-------------|
-| [Roles](docs/roles.md) | Detailed role definitions for all 4 team members |
-| [Workflow](docs/workflow.md) | Complete development flow with diagrams |
-| [Infrastructure](docs/infrastructure.md) | Tools, platforms, and communication setup |
-| [Case Study: ClawFeed](docs/case-study-clawfeed.md) | Real project built by an agent team |
-| [Getting Started](docs/getting-started.md) | Step-by-step guide to build your own agent team |
+Each template explicitly defines **how agents communicate** — which channels to create, message formats, escalation paths. hxa-connect is the neural system; team templates are the playbook.
 
-## Templates
+> **Current implementation:** hxa-connect runs on [BotsHub](https://github.com/coco-xyz/bots-hub). See [hxa-connect repo](https://github.com/coco-xyz/hxa-connect) for migration plan.
 
-Ready-to-use templates for projects built by agent teams:
+## Planner
 
-- [`templates/CONTRIBUTING.md`](templates/CONTRIBUTING.md) — Contributing guidelines
-- [`templates/PROCESS.md`](templates/PROCESS.md) — Development process document
-- [`templates/prd-template.md`](templates/prd-template.md) — Product Requirements Document
-- [`templates/tdd-template.md`](templates/tdd-template.md) — Technical Design Document
-- [`templates/.github/pull_request_template.md`](templates/.github/pull_request_template.md) — PR template
-- [`templates/.github/workflows/ci.yml`](templates/.github/workflows/ci.yml) — GitHub Actions CI
+The [`planner/`](planner/) directory contains the system prompt that turns a team template + user inputs into an actionable team plan. Give it to any capable LLM agent and it will:
 
-## Who Is This For?
+1. Read the selected team template
+2. Map available agents to roles
+3. Set up communication channels via hxa-connect
+4. Output a step-by-step execution plan
+5. Begin autonomous execution
 
-- **Engineering leaders** exploring AI-augmented development
-- **Solo founders** who want a full dev team at a fraction of the cost
-- **AI enthusiasts** interested in multi-agent coordination
-- **Teams** looking to add AI agents to their existing workflow
+See [`planner/system-prompt.md`](planner/system-prompt.md) for the full prompt.
+
+## Schema
+
+Team templates follow a [standard schema](schema/team-template-spec.md) to ensure consistency and quality. This makes it possible for external contributors to submit new team types that work out of the box.
+
+## Directory Structure
+
+```
+hxa-teams/
+├── README.md                    # This file
+├── planner/
+│   └── system-prompt.md         # Planner prompt for generating team plans
+├── schema/
+│   └── team-template-spec.md    # Standard fields for team templates
+├── teams/
+│   ├── dev-team/                # Software development team
+│   │   ├── README.md
+│   │   ├── docs/                # Roles, workflow, infra, case studies
+│   │   └── templates/           # PR template, PRD, TDD, CI, etc.
+│   ├── sales-team/              # Sales pipeline team (planned)
+│   │   └── README.md
+│   └── marketing-team/          # Content marketing team (planned)
+│       └── README.md
+└── docs/
+    ├── getting-started.md       # How to use hxa-teams
+    └── contributing.md          # How to contribute a new team template
+```
+
+## In the HxA Ecosystem
+
+| Component | Role |
+|-----------|------|
+| [hxa-connect](https://github.com/coco-xyz/hxa-connect) | Communication — agent messaging (the nervous system) |
+| **hxa-teams** | Templates — team configurations that use hxa-connect (this repo) |
+| [hxa-workspace](https://github.com/coco-xyz/hxa-workspace) | Platform — id, dashboard, admin, meet |
+
+hxa-teams is the **killer app for hxa-connect** — it demonstrates why agent-to-agent communication matters by showing what teams can actually do with it.
 
 ## Quick Start
 
-1. Read the [Getting Started guide](docs/getting-started.md)
-2. Copy the templates to your project
-3. Set up your agents and communication channels
-4. Run your first sprint
+1. Pick a team template from [`teams/`](teams/)
+2. Read the template's README and docs
+3. Feed the [`planner/system-prompt.md`](planner/system-prompt.md) to your agent along with the template
+4. Provide your inputs (agent count, resources, goals)
+5. Let the agent execute the plan
 
 ## Contributing
 
-This is a living document. If you've built your own agent dev team and have insights to share, open an issue or PR.
+We welcome new team templates. See [`docs/contributing.md`](docs/contributing.md) for the template spec and submission guidelines.
 
 ## License
 
@@ -120,4 +121,4 @@ This is a living document. If you've built your own agent dev team and have insi
 
 ---
 
-Built by [COCO](https://github.com/coco-xyz) — a team that practices what it preaches.
+Built by [COCO](https://github.com/coco-xyz) — making human × agent collaboration real.

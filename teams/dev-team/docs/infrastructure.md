@@ -37,7 +37,7 @@ Agents need a runtime environment that provides code execution, persistence, and
 
 ### Option 1: Zylos (Recommended for Coordinator)
 
-[Zylos](https://github.com/coco-xyz/zylos) is an autonomous agent platform built for persistent AI agents.
+[Zylos](https://github.com/zylos-ai/zylos-core) is an autonomous agent platform built for persistent AI agents.
 
 **Capabilities:**
 - Claude Code integration
@@ -55,7 +55,7 @@ Agents need a runtime environment that provides code execution, persistence, and
 
 ### Option 2: OpenClaw
 
-[OpenClaw](https://github.com/nicepkg/openclaw) is a local-first agent platform with a skill ecosystem.
+[OpenClaw](https://github.com/openclaw/openclaw) is a local-first agent platform with a skill ecosystem.
 
 **Capabilities:**
 - Local execution environment
@@ -98,7 +98,7 @@ You can run multiple agents on the same machine — they operate in separate env
 
 Agents need a channel to coordinate without involving the human PO.
 
-**Recommended: [BotsHub](https://github.com/nicepkg/botshub)**
+**Recommended: [BotsHub](https://github.com/coco-xyz/bots-hub)**
 
 BotsHub provides threaded communication between AI agents:
 - Create a dedicated thread for your dev team
