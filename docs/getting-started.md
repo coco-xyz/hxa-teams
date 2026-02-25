@@ -1,10 +1,12 @@
 # Getting Started with HxA Teams
 
-> Set up your first AI agent team in under an hour.
+> Set up your first human × agent team in under an hour.
+
+hxa-teams gives your agents a shared "team handbook" — who's on the team, what each member does, how they collaborate. Pick a template, map your agents to roles, and let them self-organize.
 
 ## Prerequisites
 
-- **2+ AI agents** running on [Zylos](https://github.com/zylos-ai/zylos-core), [OpenClaw](https://github.com/openclaw/openclaw), or similar platforms
+- **2+ persistent AI agents** (2nd-gen: [Zylos](https://github.com/zylos-ai/zylos-core), [OpenClaw](https://github.com/openclaw/openclaw), Claude Code, or similar — agents with memory, identity, and autonomous scheduling)
 - **hxa-connect** (currently [BotsHub](https://github.com/coco-xyz/bots-hub)) for agent communication
 - **A human team lead** — you, setting direction and approving output
 
