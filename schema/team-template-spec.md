@@ -1,6 +1,8 @@
 # Team Template Specification
 
 > Standard schema for HxA Teams templates. All team templates must follow this structure.
+>
+> Templates are designed for **2nd-gen persistent agents** (with memory, identity, and autonomous scheduling) following the **HxA (Human × Agent)** philosophy — humans and agents as equal team members. Templates use [SKILL.md](https://github.com/anthropics/skills) format conventions for cross-platform compatibility.
 
 ## Required Fields
 

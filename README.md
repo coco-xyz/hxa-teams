@@ -1,10 +1,26 @@
 # HxA Teams
 
-> Team templates for human × agent collaboration.
+> Team context protocol and templates for human × agent collaboration.
 
-HxA Teams is a collection of **ready-to-use team templates** that help AI agents spin up functional teams — dev teams, sales teams, marketing teams, and more. Each template defines roles, workflows, communication patterns, and infrastructure so an agent can read a template and self-organize a working team.
+**hxa-teams** is a team context protocol and template library built on the **HxA (Human × Agent)** philosophy — humans and agents are equal team members, collaborating rather than commanding.
 
-This is not a framework or SDK. It's a **knowledge repo** — the onboarding handbook that agents read to understand how teams work.
+MCP solves Agent-Tool. A2A solves Agent-Agent. **hxa-teams solves Agent-Team** — how an agent understands the team it belongs to: who's on the team, what each member does, how they collaborate, and what the team's goals are.
+
+### What It Is
+
+- A set of **declarative team templates** (Markdown/YAML) — not a framework, not an SDK
+- **Tool-agnostic** — works with Zylos, OpenClaw, Claude Code, Cursor, or any 2nd-gen persistent agent
+- **Based on [SKILL.md](https://github.com/anthropics/skills)** format — cross-platform by default
+- **For SMBs and solo founders** — designed for 2–20 person teams (humans + agents)
+
+### What Problem It Solves
+
+Today, deploying persistent AI agents in a team means:
+- Hardcoding team info in system prompts (hard to maintain, version chaos)
+- Letting agents figure out team context on their own (slow, error-prone)
+- Writing piles of YAML config (developer-facing, not collaboration-facing)
+
+90% of agent projects fail at operationalization, not capability. hxa-teams provides the **organizational blueprint** that makes agent teams actually work.
 
 ---
 
@@ -95,13 +111,14 @@ hxa-teams/
 
 ## In the HxA Ecosystem
 
-| Component | Role |
-|-----------|------|
-| [hxa-connect](https://github.com/coco-xyz/hxa-connect) | Communication — agent messaging (the nervous system) |
-| **hxa-teams** | Templates — team configurations that use hxa-connect (this repo) |
-| [hxa-workspace](https://github.com/coco-xyz/hxa-workspace) | Platform — id, dashboard, admin, meet |
+| Layer | Component | Role |
+|-------|-----------|------|
+| **Standard** | MCP, A2A, SKILL.md | Agent-Tool, Agent-Agent, skill format |
+| **Communication** | [hxa-connect](https://github.com/coco-xyz/hxa-connect) | Agent messaging (the nervous system) |
+| **Team Context** | **hxa-teams** (this repo) | Team templates — roles, workflows, quality gates |
+| **Platform** | [hxa-workspace](https://github.com/coco-xyz/hxa-workspace) | ID, dashboard, admin, meet |
 
-hxa-teams is the **killer app for hxa-connect** — it demonstrates why agent-to-agent communication matters by showing what teams can actually do with it.
+hxa-teams fills the **Agent-Team layer** — the missing piece between agent-level tooling and platform-level infrastructure.
 
 ## Quick Start
 
@@ -122,3 +139,5 @@ We welcome new team templates. See [`docs/contributing.md`](docs/contributing.md
 ---
 
 Built by [COCO](https://github.com/coco-xyz) — making human × agent collaboration real.
+
+> **Positioning & research:** [hxa-teams-positioning.md](https://jessie.coco.site/hxa-teams-positioning.md) | [hxa-teams-landscape-research.md](https://jessie.coco.site/hxa-teams-landscape-research.md)
