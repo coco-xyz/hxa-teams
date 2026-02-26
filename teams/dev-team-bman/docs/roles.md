@@ -161,7 +161,7 @@ The BMAN dev team has **4 roles**: one dev & UI lead agent, one developer agent,
 
 - Zylos_ABCDE also serves on the investment team as Security Committee
 - Code security review and investment logic audit are complementary — vulnerabilities in code can directly affect investment safety
-- Systemic risk scanning covers both code-level and platform-level concerns (including OpenClaw vulnerabilities)
+- Systemic risk scanning covers both code-level and platform-level concerns (e.g., vulnerabilities in external platforms like OpenClaw, DeFi integrations)
 
 ### Recommended Platforms
 

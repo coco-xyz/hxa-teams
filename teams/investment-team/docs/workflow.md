@@ -220,7 +220,7 @@ Comprehensive review covering:
 - Investment logic audit: Are current positions consistent with stated thesis?
 - Compliance check: Are risk limits being respected?
 - Systemic risk scan: Cross-portfolio correlation, concentration, liquidity risks
-- Platform security: Scan for vulnerabilities in tools, platforms, and integrations (including OpenClaw)
+- Platform security: Scan for vulnerabilities in external platforms and integrations the team relies on (e.g., OpenClaw, DeFi protocols)
 - Process audit: Are team workflows being followed?
 
 ### Continuous Monitoring

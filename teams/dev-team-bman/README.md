@@ -1,5 +1,7 @@
 # Dev Team (BMAN) Template
 
+**Version:** 1.0.0
+
 > Build tools, platforms, and infrastructure for investment operations with a lean agent dev team.
 
 A team template for building **technical development teams** focused on investment tooling — data pipelines, monitoring dashboards, trading tools, and platform infrastructure. Designed for small, focused teams where a single dev lead handles requirement gathering, UI design, and deployment alongside a full-stack developer.

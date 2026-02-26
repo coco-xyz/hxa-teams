@@ -1,5 +1,7 @@
 # Investment Team Template
 
+**Version:** 1.0.0
+
 > Autonomous investment signal monitoring, research, modeling, and decision support for crypto/blockchain investments.
 
 A team template for building **investment operations teams** where AI agents continuously monitor markets, research opportunities, model strategies, and support human decision-making — 24/7, across global time zones.

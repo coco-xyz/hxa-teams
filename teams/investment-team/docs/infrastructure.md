@@ -95,14 +95,13 @@ Investment operations require access to market data, on-chain data, and news fee
 |--------|------|---------|-----------|
 | CryptoPanic API | News aggregator | Aggregated crypto news with sentiment scoring | Free tier / $49+/mo |
 | Twitter/X API | Social media | Influencer tracking, sentiment analysis | $100+/mo |
-| Messari | Research platform | Professional research, governance tracking | $300+/mo |
 | RSS feeds | News | Direct from major outlets | Free |
 
 ### Research Platforms
 
 | Source | Type | Purpose | Est. Cost |
 |--------|------|---------|-----------|
-| Messari | Research | Professional crypto research, token profiles | $300+/mo |
+| Messari | Research | Professional crypto research, governance tracking, token profiles | $300+/mo |
 | Token Terminal | Financial data | Protocol revenue, earnings, financial metrics | $325+/mo |
 | DeFi Safety | Security ratings | Protocol security scores and audits | Free |
 

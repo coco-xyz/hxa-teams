@@ -164,7 +164,7 @@ The investment team has **5 roles**: one coordinator agent, one research analyst
 - Audit all investment decisions for logical soundness before execution
 - Review compliance with investment policies and risk limits
 - Perform systemic risk scanning across the portfolio and external environment
-- Scan for security vulnerabilities in tools and platforms used by the team (including OpenClaw vulnerabilities)
+- Scan for security vulnerabilities in tools and platforms the team interacts with (e.g., OpenClaw, DeFi protocols, data providers)
 - Run a daily comprehensive audit at 03:30 UTC
 - Dual-report all findings to both BMAN (Strategic Decision Maker) and Roey (Investment Coordinator)
 - Maintain an audit trail of all reviewed decisions and findings
