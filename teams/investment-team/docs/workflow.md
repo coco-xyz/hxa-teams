@@ -16,10 +16,10 @@ Each step is detailed below.
 
 ## 1. Signal Detection
 
-**Who:** Investment Coordinator (Roey)
+**Who:** Investment Coordinator
 **Where:** External data sources, `#intel`
 
-Roey continuously monitors data sources for investment-relevant signals:
+The Coordinator continuously monitors data sources for investment-relevant signals:
 - On-chain data (whale movements, TVL changes, token flows)
 - Market data (price feeds, volume spikes, funding rates)
 - News feeds (regulatory announcements, partnerships, incidents)
@@ -33,14 +33,14 @@ Roey continuously monitors data sources for investment-relevant signals:
 
 ## 2. Signal Classification
 
-**Who:** Investment Coordinator (Roey)
+**Who:** Investment Coordinator
 **Where:** `#intel`, `#general`
 
-Roey classifies each signal using the red/yellow/green framework:
+The Coordinator classifies each signal using the red/yellow/green framework:
 
 | Level | Color | Criteria | Action |
 |-------|-------|----------|--------|
-| Critical | Red | Black swan events, >10% price moves, security vulnerabilities | Immediate BMAN escalation |
+| Critical | Red | Black swan events, >10% price moves, security vulnerabilities | Immediate escalation to Decision Maker |
 | Important | Yellow | Earnings miss, whale movements, regulatory news | Daily report inclusion |
 | Routine | Green | Market data updates, periodic information | Auto-archive |
 
@@ -49,11 +49,11 @@ Roey classifies each signal using the red/yellow/green framework:
 Signal detected
       │
       ▼
-Roey classifies as RED
+Coordinator classifies as RED
       │
       ├──→ Broadcast to #general (all agents alerted)
       │
-      └──→ Immediate DM to BMAN with:
+      └──→ Immediate DM to Decision Maker with:
            - Signal summary
            - Severity assessment
            - Recommended action
@@ -65,7 +65,7 @@ Roey classifies as RED
 Signal detected
       │
       ▼
-Roey classifies as YELLOW or GREEN
+Coordinator classifies as YELLOW or GREEN
       │
       ├──→ YELLOW: Added to daily report queue
       │
@@ -76,31 +76,31 @@ Roey classifies as YELLOW or GREEN
 
 ## 3. Daily Reporting
 
-**Who:** Investment Coordinator (Roey)
+**Who:** Investment Coordinator
 **Where:** `#general`
 **Schedule:** 10:00 and 22:00 (local time)
 
-Roey produces two daily reports covering:
+The Coordinator produces two daily reports covering:
 - Summary of all signals received since last report
 - Yellow signal analysis and context
 - Status of ongoing research tasks
 - Model output highlights
-- Pending decisions for BMAN
-- Audit findings from Zylos_ABCDE (if any)
+- Pending decisions for the Decision Maker
+- Audit findings from the Security Auditor (if any)
 
 **Example daily report structure:**
 ```
 === Daily Report (10:00) ===
 
 ## Signals (last 12h)
-- 🔴 Red: 0
-- 🟡 Yellow: 3
-- 🟢 Green: 14
+- Red: 0
+- Yellow: 3
+- Green: 14
 
 ## Yellow Signals
 1. [YELLOW] Uniswap governance proposal #47 — potential fee switch
    - Impact: Medium (affects UNI token value thesis)
-   - Action: Research task dispatched to Boy
+   - Action: Research task dispatched to Research Analyst
 
 2. [YELLOW] Whale wallet 0x3f...moved 12,000 ETH to exchange
    - Impact: Low-Medium (potential sell pressure)
@@ -111,39 +111,39 @@ Roey produces two daily reports covering:
    - Action: Full text analysis in progress
 
 ## Ongoing Research
-- Boy: Uniswap fee switch DD — ETA 6h
-- Joey: Updated portfolio risk model — complete, results in #research
+- Research Analyst: Uniswap fee switch DD — ETA 6h
+- Investment Engineer: Updated portfolio risk model — complete, results in #research
 
 ## Pending Decisions
-- None requiring immediate BMAN input
+- None requiring immediate input from Decision Maker
 
 ## Audit
-- Zylos_ABCDE 03:30 UTC audit: CLEAN — no findings
+- Security Auditor 03:30 UTC audit: CLEAN — no findings
 ```
 
 ---
 
 ## 4. Research Dispatch
 
-**Who:** Investment Coordinator (Roey) → Research Analyst (Boy)
-**Where:** DM (Roey → Boy), `#research`
+**Who:** Investment Coordinator → Research Analyst
+**Where:** DM (Coordinator → Research Analyst), `#research`
 
-When a signal warrants deeper investigation, Roey dispatches a research task:
+When a signal warrants deeper investigation, the Coordinator dispatches a research task:
 
-1. Roey sends a structured task to Boy via DM:
+1. The Coordinator sends a structured task to the Research Analyst via DM:
    - Subject: What to research
    - Scope: Specific questions to answer
    - Deadline: Expected turnaround
    - Priority: Urgency level
    - Context: Related signals, prior research to reference
 
-2. Boy acknowledges and begins research
+2. The Research Analyst acknowledges and begins research
 
-3. Boy posts completed DD report to `#research`
+3. The Research Analyst posts completed DD report to `#research`
 
 **Example dispatch:**
 ```
-TO: Boy
+TO: Research Analyst
 TASK: Due diligence on Uniswap fee switch proposal
 SCOPE:
   - Revenue impact modeling (current vs proposed fee structure)
@@ -159,16 +159,16 @@ CONTEXT: Yellow signal from governance tracker. UNI is 4% of portfolio.
 
 ## 5. Research Execution
 
-**Who:** Research Analyst (Boy)
+**Who:** Research Analyst
 **Where:** `#research`
 
-Boy conducts due diligence following a structured process:
+The Research Analyst conducts due diligence following a structured process:
 
 1. **Data collection** — Gather on-chain data, documentation, governance forums, market data
 2. **Analysis** — Evaluate team, technology, tokenomics, market position, risks
 3. **Backtesting** — Where applicable, run historical backtests on similar events/strategies
 4. **Report production** — Structured DD report with clear findings and risk assessment
-5. **Delivery** — Post to `#research` and notify Roey
+5. **Delivery** — Post to `#research` and notify the Coordinator
 
 **Quality gate:** Every DD report must include:
 - [ ] Clear thesis statement (bullish/bearish/neutral with reasoning)
@@ -180,10 +180,10 @@ Boy conducts due diligence following a structured process:
 
 ## 6. Investment Modeling
 
-**Who:** Investment Engineer (Joey)
+**Who:** Investment Engineer
 **Where:** `#research`
 
-Joey builds and maintains investment models in parallel with research:
+The Investment Engineer builds and maintains investment models in parallel with research:
 
 1. **Model construction** — Build quantitative models (pricing, risk, portfolio optimization)
 2. **Strategy backtesting** — Test investment strategies against historical data
@@ -209,10 +209,10 @@ RECOMMENDATION: Reduce concentration. Consider rebalancing top 3 to <55%.
 
 ## 7. Security Audit
 
-**Who:** Security Committee (Zylos_ABCDE)
-**Where:** `#intel`, DM to BMAN + Roey
+**Who:** Security Auditor
+**Where:** `#intel`, DM to Decision Maker + Coordinator
 
-Zylos_ABCDE performs continuous and scheduled security audits:
+The Security Auditor performs continuous and scheduled security audits:
 
 ### Scheduled Audit (Daily 03:30 UTC)
 
@@ -220,7 +220,7 @@ Comprehensive review covering:
 - Investment logic audit: Are current positions consistent with stated thesis?
 - Compliance check: Are risk limits being respected?
 - Systemic risk scan: Cross-portfolio correlation, concentration, liquidity risks
-- Platform security: Scan for vulnerabilities in external platforms and integrations the team relies on (e.g., OpenClaw, DeFi protocols)
+- Platform security: Scan for vulnerabilities in external platforms and integrations the team relies on (e.g., DeFi protocols)
 - Process audit: Are team workflows being followed?
 
 ### Continuous Monitoring
@@ -231,13 +231,13 @@ Comprehensive review covering:
 
 ### Dual Reporting
 
-All findings are reported to both BMAN and Roey:
+All findings are reported to both the Decision Maker and the Coordinator:
 ```
 Audit finding
       │
-      ├──→ DM to BMAN (for strategic awareness)
+      ├──→ DM to Decision Maker (for strategic awareness)
       │
-      └──→ DM to Roey / #intel (for operational action)
+      └──→ DM to Coordinator / #intel (for operational action)
 ```
 
 **Quality gate:** Every audit must produce:
@@ -249,14 +249,14 @@ Audit finding
 
 ## 8. Decision
 
-**Who:** Strategic Decision Maker (BMAN)
-**Where:** DM with Roey, `#general`
+**Who:** Strategic Decision Maker (Human)
+**Where:** DM with Coordinator, `#general`
 
-BMAN makes final decisions based on aggregated inputs:
-- Daily reports from Roey
-- DD reports from Boy
-- Model outputs from Joey
-- Audit findings from Zylos_ABCDE
+The Decision Maker makes final decisions based on aggregated inputs:
+- Daily reports from the Coordinator
+- DD reports from the Research Analyst
+- Model outputs from the Investment Engineer
+- Audit findings from the Security Auditor
 
 **Decision types:**
 - **Go/No-go:** Execute or pass on an investment opportunity
@@ -292,17 +292,17 @@ Decision → Execution → Tracking → Retrospective → Knowledge Update → D
 
 | Channel | Purpose | Participants |
 |---------|---------|-------------|
-| **#intel** | Signal triage, intelligence summaries, audit findings | Roey, Zylos_ABCDE |
-| **#research** | DD reports, backtest results, model outputs, investment modeling | Boy, Roey, Joey |
+| **#intel** | Signal triage, intelligence summaries, audit findings | Coordinator, Security Auditor |
+| **#research** | DD reports, backtest results, model outputs, investment modeling | Research Analyst, Coordinator, Investment Engineer |
 | **#general** | Red signal broadcasts, daily reports, cross-team announcements | All |
-| **DM: Roey ↔ Boy** | Research task dispatch, scope clarification | Roey, Boy |
-| **DM: Roey ↔ Joey** | Modeling task assignment, data pipeline requests | Roey, Joey |
-| **DM: Zylos_ABCDE ↔ anyone** | Audit inquiries, compliance questions | Zylos_ABCDE, * |
+| **DM: Coordinator ↔ Research Analyst** | Research task dispatch, scope clarification | Coordinator, Research Analyst |
+| **DM: Coordinator ↔ Investment Engineer** | Modeling task assignment, data pipeline requests | Coordinator, Investment Engineer |
+| **DM: Security Auditor ↔ anyone** | Audit inquiries, compliance questions | Security Auditor, * |
 
 ### Notification Flow
 
 ```
-Signal detected ──→ Roey classifies in #intel
+Signal detected ──→ Coordinator classifies in #intel
                          │
                     ┌────┴────┐
                     ▼         ▼
@@ -310,16 +310,16 @@ Signal detected ──→ Roey classifies in #intel
                     │         │
                     ▼         ▼
             #general +    Daily report
-            DM to BMAN    (10:00/22:00)
-                              │
+            DM to         (10:00/22:00)
+            Decision Maker     │
                               ▼
-                      Research dispatch ──→ Boy
+                      Research dispatch ──→ Research Analyst
                               │
                               ▼
                     DD report in #research
                               │
                               ▼
-                    Roey consolidates for BMAN
+                    Coordinator consolidates for Decision Maker
 ```
 
 ---
@@ -328,12 +328,12 @@ Signal detected ──→ Roey classifies in #intel
 
 | Automation | Owner | Mechanism |
 |-----------|-------|-----------|
-| Signal monitoring | Roey | Continuous data source polling (market APIs, on-chain, news) |
-| Signal classification | Roey | Automated triage with severity framework |
-| Daily reports | Roey | Scheduler triggers at 10:00 and 22:00 |
-| Security audit | Zylos_ABCDE | Scheduler triggers at 03:30 UTC |
-| Research tracking | Roey | Monitor dispatched task status, follow up on overdue items |
-| Model updates | Joey | Triggered by new data availability or schedule |
+| Signal monitoring | Coordinator | Continuous data source polling (market APIs, on-chain, news) |
+| Signal classification | Coordinator | Automated triage with severity framework |
+| Daily reports | Coordinator | Scheduler triggers at 10:00 and 22:00 |
+| Security audit | Security Auditor | Scheduler triggers at 03:30 UTC |
+| Research tracking | Coordinator | Monitor dispatched task status, follow up on overdue items |
+| Model updates | Investment Engineer | Triggered by new data availability or schedule |
 | Knowledge base update | All | Post-decision recording to Qdrant/SQLite |
 
 ---
@@ -344,7 +344,7 @@ Signal detected ──→ Roey classifies in #intel
 Data sources (on-chain, market, news, social)
          │
          ▼
-Roey monitors + classifies signal
+Coordinator monitors + classifies signal
          │
     ┌────┴──────────────────┐
     ▼                       ▼
@@ -352,30 +352,31 @@ RED signal              YELLOW/GREEN signal
     │                       │
     ▼                       ▼
 Broadcast #general      Daily report queue
-+ DM to BMAN                │
++ DM to Decision Maker     │
     │                       ▼
-    ▼               Roey dispatches research
-BMAN decides              │
-immediate action    ┌─────┴──────┐
-                    ▼            ▼
-                  Boy          Joey
+    ▼               Coordinator dispatches research
+Decision Maker           │
+decides              ┌─────┴──────┐
+immediate action     ▼            ▼
+                  Research      Investment
+                  Analyst       Engineer
                (DD report)  (model update)
                     │            │
                     ▼            ▼
               Post to #research
                     │
                     ▼
-         Zylos_ABCDE audits
+         Security Auditor audits
          (logic, compliance, risk)
                     │
                     ▼
-         Dual report: BMAN + Roey
+         Dual report: Decision Maker + Coordinator
                     │
                     ▼
-         Roey consolidates daily report
+         Coordinator consolidates daily report
                     │
                     ▼
-         BMAN reviews + decides
+         Decision Maker reviews + decides
                     │
                     ▼
          Decision recorded → feedback loop

@@ -10,15 +10,15 @@ A team template for building **investment operations teams** where AI agents con
 
 ```
                     ┌─────────────────────────────────────┐
-                    │    Strategic Decision Maker (Human)   │
-                    │   (final trades, investment direction) │
+                    │   Strategic Decision Maker (Human)    │
+                    │  (final trades, investment direction)  │
                     └──────────────┬──────────────────────┘
                                    │
                           red signal escalation
                           + daily reports
                                    │
                     ┌──────────────▼──────────────────────┐
-                    │     Investment Coordinator (Roey)     │
+                    │      Investment Coordinator           │
                     │  (signal triage, daily reports,       │
                     │   task dispatch, downstream monitor)  │
                     └──────┬───────────────┬──────────────┘
@@ -29,7 +29,6 @@ A team template for building **investment operations teams** where AI agents con
                     ┌──────▼─────┐  ┌──────▼──────┐
                     │  Research   │  │  Investment  │
                     │  Analyst    │  │  Engineer    │
-                    │  (Boy)      │  │  (Joey)      │
                     └──────┬─────┘  └──────┬──────┘
                            │               │
                            └───────┬───────┘
@@ -37,7 +36,7 @@ A team template for building **investment operations teams** where AI agents con
                         reports + models
                                    │
                     ┌──────────────▼──────────────────────┐
-                    │     Security Committee (Zylos_ABCDE)  │
+                    │         Security Auditor              │
                     │  (investment logic audit, compliance,  │
                     │   systemic risk, daily 03:30 UTC scan) │
                     └──────────────┬──────────────────────┘
@@ -45,20 +44,20 @@ A team template for building **investment operations teams** where AI agents con
                           dual report
                                    │
                     ┌──────────────▼──────────────────────┐
-                    │    Strategic Decision Maker (BMAN)    │
-                    │    + Investment Coordinator (Roey)     │
+                    │   Strategic Decision Maker (Human)    │
+                    │   + Investment Coordinator             │
                     └─────────────────────────────────────┘
 ```
 
 ## Roles
 
-| Role | Agent | Type | Responsibilities |
-|------|-------|------|------------------|
-| **Investment Coordinator** | Roey | agent | Signal triage (red/yellow/green), daily reports at 10:00 & 22:00, task dispatch |
-| **Research Analyst** | Boy | agent | Due diligence, project backtesting, research reports |
-| **Investment Engineer** | Joey | agent | Investment model building, strategy modeling, investment platform development |
-| **Security Committee** | Zylos_ABCDE | agent | Investment logic audit, compliance, systemic risk scanning, daily audit at 03:30 UTC |
-| **Strategic Decision Maker** | BMAN | human | Final trade decisions, investment direction, red signal escalation |
+| Role | Type | Responsibilities |
+|------|------|------------------|
+| **Investment Coordinator** | agent | Signal triage (red/yellow/green), daily reports at 10:00 & 22:00, task dispatch |
+| **Research Analyst** | agent | Due diligence, project backtesting, research reports |
+| **Investment Engineer** | agent | Investment model building, strategy modeling, investment platform development |
+| **Security Auditor** | agent | Investment logic audit, compliance, systemic risk scanning, daily audit at 03:30 UTC |
+| **Strategic Decision Maker** | human | Final trade decisions, investment direction, red signal escalation |
 
 See [docs/roles.md](docs/roles.md) for detailed role definitions.
 
@@ -68,37 +67,37 @@ Communication channels this template creates:
 
 | Channel | Type | Members | Purpose |
 |---------|------|---------|---------|
-| `#intel` | Channel | Roey, Zylos_ABCDE | Signal triage output, intelligence summaries |
-| `#research` | Channel | Boy, Roey, Joey | DD reports, backtest results, investment modeling |
+| `#intel` | Channel | Coordinator, Security Auditor | Signal triage output, intelligence summaries |
+| `#research` | Channel | Research Analyst, Coordinator, Investment Engineer | DD reports, backtest results, investment modeling |
 | `#general` | Channel | All | Red signal broadcasts, cross-team announcements |
-| DM: Roey → Boy | Direct | Roey, Boy | Research task dispatch |
-| DM: Roey → Joey | Direct | Roey, Joey | Modeling task assignment |
-| DM: Zylos_ABCDE → anyone | Direct | Zylos_ABCDE, * | Audit inquiries |
+| DM: Coordinator → Research Analyst | Direct | Coordinator, Research Analyst | Research task dispatch |
+| DM: Coordinator → Investment Engineer | Direct | Coordinator, Investment Engineer | Modeling task assignment |
+| DM: Security Auditor → anyone | Direct | Security Auditor, * | Audit inquiries |
 
 **Message patterns:**
-- Signal detected: Roey classifies and posts to `#intel` with severity tag
-- Red signal: Roey broadcasts to `#general`, escalates to BMAN immediately
-- Research dispatch: Roey assigns task to Boy via DM, Boy posts report to `#research`
-- Model update: Joey posts model results to `#research`
-- Audit finding: Zylos_ABCDE posts to `#intel`, dual-reports to BMAN + Roey
-- Daily report: Roey posts to `#general` at 10:00 and 22:00
+- Signal detected: Coordinator classifies and posts to `#intel` with severity tag
+- Red signal: Coordinator broadcasts to `#general`, escalates to Decision Maker immediately
+- Research dispatch: Coordinator assigns task to Research Analyst via DM, Research Analyst posts report to `#research`
+- Model update: Investment Engineer posts model results to `#research`
+- Audit finding: Security Auditor posts to `#intel`, dual-reports to Decision Maker + Coordinator
+- Daily report: Coordinator posts to `#general` at 10:00 and 22:00
 
 ## Signal Classification
 
 | Level | Color | Example Triggers | Action |
 |-------|-------|-----------------|--------|
-| Critical | Red | Black swan events, >10% price moves, security vulnerabilities | Immediate BMAN escalation |
+| Critical | Red | Black swan events, >10% price moves, security vulnerabilities | Immediate escalation to Decision Maker |
 | Important | Yellow | Earnings miss, whale movements, regulatory news | Daily report inclusion |
 | Routine | Green | Market data updates, periodic information | Auto-archive |
 
 ## Workflow
 
-1. Roey continuously monitors data sources, receives and classifies signals
-2. Red signals escalate immediately to BMAN; Yellow signals go into daily reports
-3. Roey dispatches research tasks to Boy; Boy produces DD/backtest reports
-4. Joey builds and maintains investment models, strategy backtesting systems, and investment platform
-5. Zylos_ABCDE audits investment logic, compliance, and systemic risks — dual report to BMAN + Roey
-6. BMAN makes final decisions based on aggregated reports
+1. Coordinator continuously monitors data sources, receives and classifies signals
+2. Red signals escalate immediately to Decision Maker; Yellow signals go into daily reports
+3. Coordinator dispatches research tasks to Research Analyst; Research Analyst produces DD/backtest reports
+4. Investment Engineer builds and maintains investment models, strategy backtesting systems, and investment platform
+5. Security Auditor audits investment logic, compliance, and systemic risks — dual report to Decision Maker + Coordinator
+6. Decision Maker makes final decisions based on aggregated reports
 
 See [docs/workflow.md](docs/workflow.md) for the full investment flow.
 

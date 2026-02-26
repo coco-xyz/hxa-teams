@@ -56,7 +56,7 @@ Today, deploying persistent AI agents in a team means:
 |----------|--------|-------------|
 | [Dev Team](teams/dev-team/) | **Complete** | Software development team with coordinator, developers, and QA |
 | [Investment Team](teams/investment-team/) | **Complete** | Autonomous investment signal monitoring, research, modeling, and decision support |
-| [Dev Team (BMAN)](teams/dev-team-bman/) | **Complete** | Technical development team building tools and platforms for investment operations |
+| [Dev Team (Ops)](teams/dev-team-ops/) | **Complete** | Technical development team building tools and platforms for investment operations |
 | [Sales Team](teams/sales-team/) | Planned | Outbound sales pipeline with research, outreach, and follow-up |
 | [Marketing Team](teams/marketing-team/) | Planned | Content creation pipeline with research, writing, review, and publishing |
 
@@ -105,7 +105,7 @@ hxa-teams/
 │   ├── investment-team/         # Investment operations team
 │   │   ├── README.md
 │   │   └── docs/                # Roles, workflow, infra
-│   ├── dev-team-bman/           # Dev team for investment tooling
+│   ├── dev-team-ops/            # Dev team for investment tooling
 │   │   ├── README.md
 │   │   └── docs/                # Roles, workflow, infra
 │   ├── sales-team/              # Sales pipeline team (planned)

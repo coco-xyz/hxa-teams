@@ -1,6 +1,6 @@
 # Infrastructure
 
-Everything you need to run BMAN's dev team: AI subscriptions, agent platforms, development tools, communication, and deployment setup.
+Everything you need to run the ops dev team: AI subscriptions, agent platforms, development tools, communication, and deployment setup.
 
 ---
 
@@ -12,7 +12,7 @@ You need AI model access for the agents and their development tasks.
 
 | Provider | Plan | Purpose | Est. Cost |
 |----------|------|---------|-----------|
-| Anthropic (Claude) | Max or API | Primary agent runtime (Roey, Joey, Zylos_ABCDE) | $100-200/mo per agent |
+| Anthropic (Claude) | Max or API | Primary agent runtime (all agents) | $100-200/mo per agent |
 
 **Notes:**
 - Claude Max provides generous usage for persistent agents running on platforms like Zylos
@@ -23,9 +23,9 @@ You need AI model access for the agents and their development tasks.
 
 | Role | AI Model | Reasoning |
 |------|----------|-----------|
-| Dev & UI Lead (Roey) | Claude (Anthropic) | Strong at coordination, design reasoning, deployment management |
-| Developer (Joey) | Claude (Anthropic) | Excellent code generation across full-stack technologies |
-| Security Auditor (Zylos_ABCDE) | Claude (Anthropic) | Deep analytical reasoning for security review |
+| Dev & UI Lead | Claude (Anthropic) | Strong at coordination, design reasoning, deployment management |
+| Developer | Claude (Anthropic) | Excellent code generation across full-stack technologies |
+| Security Auditor | Claude (Anthropic) | Deep analytical reasoning for security review |
 
 ---
 
@@ -50,16 +50,16 @@ Each agent needs a runtime environment with persistence, communication, and code
 
 | Agent | Deployment | Why |
 |-------|-----------|-----|
-| Roey | Cloud server | Always-on for deployment monitoring, service ops, cross-team coordination |
-| Joey | Cloud or local | Development environment — can be local if latency is acceptable |
-| Zylos_ABCDE | Cloud server (shared with investment team role) | Security review on demand, periodic scans |
+| Dev Lead | Cloud server | Always-on for deployment monitoring, service ops, cross-team coordination |
+| Developer | Cloud or local | Development environment — can be local if latency is acceptable |
+| Security Auditor | Cloud server (shared with investment team role) | Security review on demand, periodic scans |
 
 ### Minimum Viable Setup
 
 | Component | Option |
 |-----------|--------|
 | 1 cloud server (shared) | All 3 agents on a single server with PM2 process management |
-| hxa-connect instance | `boot.hxa.net` (BotsHub) |
+| hxa-connect instance | Your hxa-connect hub instance |
 
 Agents share the server but operate in separate Zylos instances. The dev team agents may share the same server with the investment team agents.
 
@@ -85,24 +85,24 @@ git config user.email "agent@example.com"
 
 | Tool | Purpose | Used By |
 |------|---------|---------|
-| Node.js | JavaScript/TypeScript runtime | Joey |
-| Python | Data pipelines, scripting | Joey |
-| Docker | Containerized deployment | Roey (deployment), Joey (development) |
-| PM2 | Process management | Roey (service ops) |
+| Node.js | JavaScript/TypeScript runtime | Developer |
+| Python | Data pipelines, scripting | Developer |
+| Docker | Containerized deployment | Dev Lead (deployment), Developer (development) |
+| PM2 | Process management | Dev Lead (service ops) |
 
 ### Design Tools
 
 | Tool | Purpose | Used By |
 |------|---------|---------|
-| Figma | UI design, component specifications | Roey |
-| Browser | Design review, UI testing | Roey, BMAN |
+| Figma | UI design, component specifications | Dev Lead |
+| Browser | Design review, UI testing | Dev Lead, Product Owner |
 
 ### CI/CD
 
 | Tool | Purpose | Setup |
 |------|---------|-------|
 | GitHub Actions | Automated checks on PR | Lint, test, build |
-| Docker / PM2 | Deployment | Managed by Roey |
+| Docker / PM2 | Deployment | Managed by Dev Lead |
 
 ---
 
@@ -110,40 +110,40 @@ git config user.email "agent@example.com"
 
 ### Agent-to-Agent Communication (hxa-connect)
 
-**Instance:** `boot.hxa.net` (BotsHub)
-**Organization:** `bman`
+**Instance:** Your hxa-connect hub instance
+**Organization:** Your organization name
 
 Channels to create:
 
 | Channel | Members | Purpose |
 |---------|---------|---------|
-| `#dev` | Joey, Roey | Development collaboration, code review, deployment notifications |
+| `#dev` | Developer, Dev Lead | Development collaboration, code review, deployment notifications |
 | `#general` | All | Cross-team announcements, product updates, acceptance |
 
 **Note:** `#dev` and `#general` are shared with the investment team's hxa-connect setup. The same channels serve both teams.
 
 **Direct message pairs:**
-- Roey ↔ Joey (task assignment, design handoff)
-- Zylos_ABCDE ↔ Joey (security findings, code quality)
+- Dev Lead ↔ Developer (task assignment, design handoff)
+- Security Auditor ↔ Developer (security findings, code quality)
 
 **Thread structure:**
 Each development task or feature gets its own thread within `#dev`, with attached artifacts (designs, code links, review results).
 
 ### Human-Agent Communication
 
-The Product Owner (BMAN) interacts with the team through:
+The Product Owner interacts with the team through:
 
 | Platform | Use Case | Setup |
 |----------|----------|-------|
-| **hxa-connect** | Primary: product updates, acceptance, announcements | BMAN joins `boot.hxa.net` directly |
-| **Telegram** | Quick confirmations, mobile access | Roey relays via Telegram bot |
+| **hxa-connect** | Primary: product updates, acceptance, announcements | Product Owner joins the hub directly |
+| **Telegram** | Quick confirmations, mobile access | Dev Lead relays via Telegram bot |
 
 **Recommended flow:**
-1. Roey posts requirement summary and design to `#general`
-2. BMAN confirms via hxa-connect or Telegram relay
+1. Dev Lead posts requirement summary and design to `#general`
+2. Product Owner confirms via hxa-connect or Telegram relay
 3. Development proceeds
-4. Roey posts deployment notification to `#general`
-5. BMAN reviews and accepts
+4. Dev Lead posts deployment notification to `#general`
+5. Product Owner reviews and accepts
 
 ---
 
@@ -153,19 +153,19 @@ The Product Owner (BMAN) interacts with the team through:
 
 | Component | Purpose | Managed By |
 |-----------|---------|-----------|
-| Application servers | Host deployed services (dashboards, APIs, tools) | Roey |
-| Reverse proxy (Nginx/Caddy) | HTTPS termination, routing | Roey |
-| Cloudflare Tunnel | Secure external access without port exposure | Roey |
-| PM2 | Process management for Node.js services | Roey |
-| Docker | Containerized deployments for isolated services | Roey |
+| Application servers | Host deployed services (dashboards, APIs, tools) | Dev Lead |
+| Reverse proxy (Nginx/Caddy) | HTTPS termination, routing | Dev Lead |
+| Cloudflare Tunnel | Secure external access without port exposure | Dev Lead |
+| PM2 | Process management for Node.js services | Dev Lead |
+| Docker | Containerized deployments for isolated services | Dev Lead |
 
 ### Monitoring
 
 | Tool | Purpose | Owner |
 |------|---------|-------|
-| PM2 monitoring | Process health, restart on failure | Roey |
-| Health endpoint checks | Service availability verification | Roey (scheduled) |
-| Error logging | Application error tracking | Joey (instrumentation), Roey (monitoring) |
+| PM2 monitoring | Process health, restart on failure | Dev Lead |
+| Health endpoint checks | Service availability verification | Dev Lead (scheduled) |
+| Error logging | Application error tracking | Developer (instrumentation), Dev Lead (monitoring) |
 
 ---
 
@@ -175,19 +175,19 @@ The Product Owner (BMAN) interacts with the team through:
 ┌─────────────────────────────────────────────────────────┐
 │                    Cloud Server                          │
 │  ┌───────────────────────────────────────────────────┐  │
-│  │  Roey (Zylos) — Dev & UI Lead                     │  │
+│  │  Dev Lead (Zylos) — Dev & UI Lead                 │  │
 │  │  - Requirement gathering, UI design (Figma)       │  │
 │  │  - Deployment pipeline, service ops               │  │
 │  │  - Service health monitoring (scheduler)          │  │
 │  └───────────────────────────────────────────────────┘  │
 │  ┌───────────────────────────────────────────────────┐  │
-│  │  Joey (Zylos) — Developer                         │  │
+│  │  Developer (Zylos)                                │  │
 │  │  - Full-stack development environment             │  │
 │  │  - Data pipeline development                      │  │
 │  │  - Git workflow (branch, commit, push)            │  │
 │  └───────────────────────────────────────────────────┘  │
 │  ┌───────────────────────────────────────────────────┐  │
-│  │  Zylos_ABCDE (Zylos) — Security Auditor           │  │
+│  │  Security Auditor (Zylos)                         │  │
 │  │  - Code security review                           │  │
 │  │  - Dependency vulnerability scanning              │  │
 │  └───────────────────────────────────────────────────┘  │
@@ -199,11 +199,11 @@ The Product Owner (BMAN) interacts with the team through:
 │  └───────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────┘
                           │
-                          │ hxa-connect (boot.hxa.net)
+                          │ hxa-connect
                           │
 ┌─────────────────────────────────────────────────────────┐
 │                   hxa-connect Hub                        │
-│  - #dev (Joey, Roey)                                    │
+│  - #dev (Developer, Dev Lead)                           │
 │  - #general (all)                                       │
 │  - DM channels                                          │
 └─────────────────────────────────────────────────────────┘
@@ -228,7 +228,7 @@ The Product Owner (BMAN) interacts with the team through:
 | Cloud server | $40-100 | Shared with investment team agents |
 | GitHub | Free | Public repos; private repos need Pro for branch protection |
 | Figma | Free-$15 | Free tier usually sufficient for agent-generated designs |
-| hxa-connect (BotsHub) | $0 | Self-hosted at boot.hxa.net |
+| hxa-connect (self-hosted) | $0 | Self-hosted on your server |
 | **Total** | **$340-715/mo** | **For a 3-agent + 1 human team** |
 
 **Note:** If running alongside the investment team on the same server, the cloud server cost is shared — do not double-count. The combined cost for both teams (7 agent roles across 4 agents) is roughly the same as running 4 agents on one server.

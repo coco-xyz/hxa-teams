@@ -12,7 +12,7 @@ You need AI model access for the agents and their specialized tasks.
 
 | Provider | Plan | Purpose | Est. Cost |
 |----------|------|---------|-----------|
-| Anthropic (Claude) | Max or API | Primary agent runtime (Roey, Boy, Joey, Zylos_ABCDE) | $100-200/mo per agent |
+| Anthropic (Claude) | Max or API | Primary agent runtime (all agents) | $100-200/mo per agent |
 | OpenAI (GPT) | API | Supplementary analysis, alternative perspective | $20-100/mo |
 
 **Notes:**
@@ -24,10 +24,10 @@ You need AI model access for the agents and their specialized tasks.
 
 | Role | AI Model | Reasoning |
 |------|----------|-----------|
-| Investment Coordinator (Roey) | Claude (Anthropic) | Strong at coordination, classification, long-context daily reports |
-| Research Analyst (Boy) | Claude (Anthropic) | Deep analytical reasoning for DD reports and backtesting |
-| Investment Engineer (Joey) | Claude (Anthropic) | Code generation for models, data pipelines |
-| Security Committee (Zylos_ABCDE) | Claude (Anthropic) | Analytical reasoning for audit, compliance, risk assessment |
+| Investment Coordinator | Claude (Anthropic) | Strong at coordination, classification, long-context daily reports |
+| Research Analyst | Claude (Anthropic) | Deep analytical reasoning for DD reports and backtesting |
+| Investment Engineer | Claude (Anthropic) | Code generation for models, data pipelines |
+| Security Auditor | Claude (Anthropic) | Analytical reasoning for audit, compliance, risk assessment |
 
 ---
 
@@ -51,17 +51,17 @@ Each agent needs a runtime environment with persistence, communication, and sche
 
 | Agent | Deployment | Why |
 |-------|-----------|-----|
-| Roey | Cloud server | Always-on signal monitoring, 24/7 availability |
-| Boy | Cloud server | Always-on for time-sensitive research tasks |
-| Joey | Cloud or local | Model building, data pipelines — can be local if latency is acceptable |
-| Zylos_ABCDE | Cloud server | Independent audit operations, scheduled 03:30 UTC scans |
+| Coordinator | Cloud server | Always-on signal monitoring, 24/7 availability |
+| Research Analyst | Cloud server | Always-on for time-sensitive research tasks |
+| Investment Engineer | Cloud or local | Model building, data pipelines — can be local if latency is acceptable |
+| Security Auditor | Cloud server | Independent audit operations, scheduled 03:30 UTC scans |
 
 ### Minimum Viable Setup
 
 | Component | Option |
 |-----------|--------|
 | 1 cloud server (shared) | All 4 agents on a single server with PM2 process management |
-| hxa-connect instance | `boot.hxa.net` (BotsHub) |
+| hxa-connect instance | Your hxa-connect hub instance |
 
 You can run multiple agents on the same server — they operate in separate Zylos instances and do not interfere with each other.
 
@@ -107,7 +107,7 @@ Investment operations require access to market data, on-chain data, and news fee
 
 **Notes:**
 - Start with free tiers and upgrade based on actual usage
-- Data source API keys should be managed centrally (assigned to Roey) and shared via secure configuration
+- Data source API keys should be managed centrally (assigned to the Coordinator) and shared via secure configuration
 - Not all sources are required from day one — prioritize based on investment focus
 
 ---
@@ -116,39 +116,39 @@ Investment operations require access to market data, on-chain data, and news fee
 
 ### Agent-to-Agent Communication (hxa-connect)
 
-**Instance:** `boot.hxa.net` (BotsHub)
-**Organization:** `bman`
+**Instance:** Your hxa-connect hub instance
+**Organization:** Your organization name
 
 Channels to create:
 
 | Channel | Members | Purpose |
 |---------|---------|---------|
-| `#general` | All agents + BMAN | Red signal broadcasts, daily reports, cross-team announcements |
-| `#intel` | Roey, Zylos_ABCDE | Signal triage output, intelligence summaries, audit findings |
-| `#research` | Boy, Roey, Joey | DD reports, backtest results, investment modeling |
+| `#general` | All agents + Decision Maker | Red signal broadcasts, daily reports, cross-team announcements |
+| `#intel` | Coordinator, Security Auditor | Signal triage output, intelligence summaries, audit findings |
+| `#research` | Research Analyst, Coordinator, Investment Engineer | DD reports, backtest results, investment modeling |
 
 **Direct message pairs:**
-- Roey ↔ Boy (research dispatch)
-- Roey ↔ Joey (modeling tasks)
-- Zylos_ABCDE ↔ any agent (audit inquiries)
+- Coordinator ↔ Research Analyst (research dispatch)
+- Coordinator ↔ Investment Engineer (modeling tasks)
+- Security Auditor ↔ any agent (audit inquiries)
 
 **Thread structure:**
 Each investment opportunity or research task gets its own thread within the relevant channel, with attached artifacts (reports, models, audit results).
 
 ### Human-Agent Communication
 
-The Strategic Decision Maker (BMAN) needs a channel to interact with the team:
+The Strategic Decision Maker needs a channel to interact with the team:
 
 | Platform | Use Case | Setup |
 |----------|----------|-------|
-| **hxa-connect** | Primary: daily reports, red signals, decisions | BMAN joins `boot.hxa.net` directly |
-| **Telegram** | Quick decisions, mobile access | Roey relays via Telegram bot |
+| **hxa-connect** | Primary: daily reports, red signals, decisions | Decision Maker joins the hub directly |
+| **Telegram** | Quick decisions, mobile access | Coordinator relays via Telegram bot |
 
 **Recommended flow:**
-1. Roey posts daily reports and red signals to `#general`
-2. BMAN reviews via hxa-connect or Telegram relay
-3. BMAN responds with decisions
-4. Roey distributes decisions to the team
+1. Coordinator posts daily reports and red signals to `#general`
+2. Decision Maker reviews via hxa-connect or Telegram relay
+3. Decision Maker responds with decisions
+4. Coordinator distributes decisions to the team
 
 ---
 
@@ -176,35 +176,35 @@ The Strategic Decision Maker (BMAN) needs a channel to interact with the team:
 ┌─────────────────────────────────────────────────────────┐
 │                    Cloud Server                          │
 │  ┌───────────────────────────────────────────────────┐  │
-│  │  Roey (Zylos) — Investment Coordinator            │  │
+│  │  Coordinator (Zylos) — Investment Coordinator     │  │
 │  │  - Signal monitoring (market + on-chain APIs)     │  │
 │  │  - Scheduler (daily reports 10:00/22:00)          │  │
 │  │  - hxa-connect bridge                             │  │
 │  └───────────────────────────────────────────────────┘  │
 │  ┌───────────────────────────────────────────────────┐  │
-│  │  Boy (Zylos) — Research Analyst                   │  │
+│  │  Research Analyst (Zylos)                         │  │
 │  │  - Web research, data analysis                    │  │
 │  │  - DD report generation                           │  │
 │  └───────────────────────────────────────────────────┘  │
 │  ┌───────────────────────────────────────────────────┐  │
-│  │  Joey (Zylos) — Investment Engineer               │  │
+│  │  Investment Engineer (Zylos)                      │  │
 │  │  - Model building, data pipelines                 │  │
 │  │  - Backtesting framework                          │  │
 │  └───────────────────────────────────────────────────┘  │
 │  ┌───────────────────────────────────────────────────┐  │
-│  │  Zylos_ABCDE (Zylos) — Security Committee        │  │
+│  │  Security Auditor (Zylos)                         │  │
 │  │  - Scheduler (daily audit 03:30 UTC)              │  │
 │  │  - Compliance + risk scanning                     │  │
 │  └───────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────┘
                           │
-                          │ hxa-connect (boot.hxa.net)
+                          │ hxa-connect
                           │
 ┌─────────────────────────────────────────────────────────┐
 │                   hxa-connect Hub                        │
 │  - #general (all)                                       │
-│  - #intel (Roey, Zylos_ABCDE)                          │
-│  - #research (Boy, Roey, Joey)                          │
+│  - #intel (Coordinator, Security Auditor)               │
+│  - #research (Research Analyst, Coordinator, Engineer)   │
 │  - DM channels                                          │
 └─────────────────────────────────────────────────────────┘
                           │
@@ -239,7 +239,7 @@ The Strategic Decision Maker (BMAN) needs a channel to interact with the team:
 | Data APIs (free tiers) | $0 | CoinGecko, DefiLlama, Binance, etc. |
 | Data APIs (paid) | $0-800 | Nansen, Messari, Token Terminal — as needed |
 | Qdrant (self-hosted) | $0 | Runs on same server |
-| hxa-connect (BotsHub) | $0 | Self-hosted at boot.hxa.net |
+| hxa-connect (self-hosted) | $0 | Self-hosted on your server |
 | **Total (minimum)** | **$440-900/mo** | **4 agents + free data sources** |
 | **Total (full data stack)** | **$1,240-1,700/mo** | **4 agents + paid data APIs** |
 

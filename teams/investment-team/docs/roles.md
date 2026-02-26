@@ -1,12 +1,10 @@
 # Roles
 
-The investment team has **5 roles**: one coordinator agent, one research analyst agent, one investment engineer agent, one security committee agent, and one human strategic decision maker. Each role has distinct responsibilities and required capabilities.
-
-> In the reference implementation, the team uses named agents (Roey, Boy, Joey, Zylos_ABCDE) + a human decision maker (BMAN) on `boot.hxa.net`. Throughout this document, we use both generic labels and reference names so you can map them to your own setup.
+The investment team has **5 roles**: one coordinator agent, one research analyst agent, one investment engineer agent, one security auditor agent, and one human strategic decision maker. Each role has distinct responsibilities and required capabilities.
 
 ---
 
-## Investment Coordinator (Roey)
+## Investment Coordinator
 
 **Primary function:** Signal monitoring, classification, daily reporting, and cross-agent task dispatch.
 
@@ -14,10 +12,10 @@ The investment team has **5 roles**: one coordinator agent, one research analyst
 
 - Monitor external data sources (on-chain data, news feeds, social media, market APIs) for investment-relevant signals
 - Classify incoming signals using the red/yellow/green framework
-- Escalate red signals immediately to the Strategic Decision Maker (BMAN)
+- Escalate red signals immediately to the Strategic Decision Maker
 - Produce daily reports at 10:00 and 22:00 with consolidated yellow/green signal summaries
-- Dispatch research tasks to the Research Analyst (Boy) with clear scope and deadlines
-- Dispatch modeling tasks to the Investment Engineer (Joey)
+- Dispatch research tasks to the Research Analyst with clear scope and deadlines
+- Dispatch modeling tasks to the Investment Engineer
 - Monitor downstream execution of dispatched tasks
 - Maintain the signal database and classification history
 - Act as the communication hub between all team members
@@ -36,16 +34,16 @@ The investment team has **5 roles**: one coordinator agent, one research analyst
 
 | Target | Channel | Purpose |
 |--------|---------|---------|
-| BMAN | DM / `#general` | Red signal escalation, daily reports |
-| Boy | DM / `#research` | Research task dispatch, scope clarification |
-| Joey | DM / `#research` | Modeling task assignment, data pipeline requests |
-| Zylos_ABCDE | `#intel` | Intelligence sharing, signal context |
+| Decision Maker | DM / `#general` | Red signal escalation, daily reports |
+| Research Analyst | DM / `#research` | Research task dispatch, scope clarification |
+| Investment Engineer | DM / `#research` | Modeling task assignment, data pipeline requests |
+| Security Auditor | `#intel` | Intelligence sharing, signal context |
 | All | `#general` | Daily reports, red signal broadcasts |
 
 ### Escalation Path
 
-- If unable to classify a signal → escalate to BMAN with raw data and context
-- If a dispatched task is overdue → re-ping the assigned agent, then escalate to BMAN if unresolved
+- If unable to classify a signal → escalate to Decision Maker with raw data and context
+- If a dispatched task is overdue → re-ping the assigned agent, then escalate to Decision Maker if unresolved
 
 ### Recommended Platforms
 
@@ -54,13 +52,13 @@ The investment team has **5 roles**: one coordinator agent, one research analyst
 
 ---
 
-## Research Analyst (Boy)
+## Research Analyst
 
 **Primary function:** Deep-dive investment research, due diligence, and project backtesting.
 
 ### Responsibilities
 
-- Accept research tasks from the Investment Coordinator (Roey)
+- Accept research tasks from the Investment Coordinator
 - Conduct due diligence on crypto projects, protocols, and tokens
 - Produce structured DD reports covering: team, technology, tokenomics, market position, risks
 - Run historical backtests on projects and strategies
@@ -82,18 +80,18 @@ The investment team has **5 roles**: one coordinator agent, one research analyst
 
 | Target | Channel | Purpose |
 |--------|---------|---------|
-| Roey | DM / `#research` | Receive research tasks, deliver reports, clarify scope |
-| Joey | `#research` | Share data for modeling, collaborate on strategy analysis |
-| Zylos_ABCDE | DM (on request) | Respond to audit inquiries about research methodology |
+| Coordinator | DM / `#research` | Receive research tasks, deliver reports, clarify scope |
+| Investment Engineer | `#research` | Share data for modeling, collaborate on strategy analysis |
+| Security Auditor | DM (on request) | Respond to audit inquiries about research methodology |
 
 ### Escalation Path
 
-- If research scope is unclear → ask Roey for clarification via DM
-- If unable to complete DD (data unavailable, project unverifiable) → report blockers to Roey with partial findings
+- If research scope is unclear → ask Coordinator for clarification via DM
+- If unable to complete DD (data unavailable, project unverifiable) → report blockers to Coordinator with partial findings
 
 ### Notes
 
-- Boy is a dedicated research role — does not cross into the dev team
+- The Research Analyst is a dedicated research role — does not cross into the dev team
 - This focus ensures research depth is not compromised by multitasking
 - More research analysts can be added for parallel coverage of multiple sectors
 
@@ -104,7 +102,7 @@ The investment team has **5 roles**: one coordinator agent, one research analyst
 
 ---
 
-## Investment Engineer (Joey)
+## Investment Engineer
 
 **Primary function:** Investment model construction, strategy modeling, and investment platform development.
 
@@ -115,7 +113,7 @@ The investment team has **5 roles**: one coordinator agent, one research analyst
 - Build and maintain the investment platform (data pipelines, dashboards, analytics tooling)
 - Integrate data sources (on-chain data, market feeds, research outputs) into unified models
 - Produce model outputs and strategy performance reports for the team
-- Collaborate with Boy on translating research findings into quantifiable models
+- Collaborate with the Research Analyst on translating research findings into quantifiable models
 - Maintain model documentation and version history
 
 ### Required Capabilities
@@ -126,27 +124,27 @@ The investment team has **5 roles**: one coordinator agent, one research analyst
 | Data engineering | Build ETL pipelines for market data, on-chain data, and research inputs |
 | Quantitative modeling | Statistical analysis, backtesting frameworks, portfolio math |
 | Persistent memory | Maintains model versions, pipeline configurations, and project context |
-| Communication | Receives tasks from Roey, collaborates with Boy, posts results to `#research` |
+| Communication | Receives tasks from Coordinator, collaborates with Research Analyst, posts results to `#research` |
 
 ### Communication Patterns
 
 | Target | Channel | Purpose |
 |--------|---------|---------|
-| Roey | DM / `#research` | Receive modeling tasks, report progress, deliver outputs |
-| Boy | `#research` | Receive research data, collaborate on strategy parameters |
-| Zylos_ABCDE | DM (on request) | Respond to audit inquiries about model logic |
+| Coordinator | DM / `#research` | Receive modeling tasks, report progress, deliver outputs |
+| Research Analyst | `#research` | Receive research data, collaborate on strategy parameters |
+| Security Auditor | DM (on request) | Respond to audit inquiries about model logic |
 
 ### Escalation Path
 
-- If model requirements are ambiguous → clarify with Roey
-- If data sources are unavailable or unreliable → report to Roey, suggest alternatives
-- If model produces unexpected results → flag to Roey and Zylos_ABCDE for audit
+- If model requirements are ambiguous → clarify with Coordinator
+- If data sources are unavailable or unreliable → report to Coordinator, suggest alternatives
+- If model produces unexpected results → flag to Coordinator and Security Auditor for audit
 
 ### Notes
 
-- Joey also serves on the dev team (dev-team-bman) as a full-stack developer
+- The Investment Engineer may also serve on the dev team as a full-stack developer
 - Investment modeling tasks and dev tasks are dispatched through different channels (`#research` vs `#dev`)
-- Priority conflicts between teams should be resolved by Roey (who serves as coordinator in both teams)
+- Priority conflicts between teams should be resolved by the Coordinator (who may serve as coordinator in both teams)
 
 ### Recommended Platforms
 
@@ -155,7 +153,7 @@ The investment team has **5 roles**: one coordinator agent, one research analyst
 
 ---
 
-## Security Committee (Zylos_ABCDE)
+## Security Auditor
 
 **Primary function:** Investment logic audit, compliance review, systemic risk scanning, and security assessment.
 
@@ -164,9 +162,9 @@ The investment team has **5 roles**: one coordinator agent, one research analyst
 - Audit all investment decisions for logical soundness before execution
 - Review compliance with investment policies and risk limits
 - Perform systemic risk scanning across the portfolio and external environment
-- Scan for security vulnerabilities in tools and platforms the team interacts with (e.g., OpenClaw, DeFi protocols, data providers)
+- Scan for security vulnerabilities in tools and platforms the team interacts with (e.g., DeFi protocols, data providers)
 - Run a daily comprehensive audit at 03:30 UTC
-- Dual-report all findings to both BMAN (Strategic Decision Maker) and Roey (Investment Coordinator)
+- Dual-report all findings to both the Decision Maker and the Coordinator
 - Maintain an audit trail of all reviewed decisions and findings
 - Flag conflicts of interest or process violations
 
@@ -178,35 +176,35 @@ The investment team has **5 roles**: one coordinator agent, one research analyst
 | Security scanning | Identify vulnerabilities in platforms, smart contracts, and operational processes |
 | Scheduler / cron | Self-wakes for daily 03:30 UTC audit cycle |
 | Persistent memory | Maintains audit history, compliance records, and risk register |
-| Communication | Posts findings to `#intel`, dual-reports to BMAN + Roey |
+| Communication | Posts findings to `#intel`, dual-reports to Decision Maker + Coordinator |
 | Independence | Operates independently from the investment workflow to maintain audit objectivity |
 
 ### Communication Patterns
 
 | Target | Channel | Purpose |
 |--------|---------|---------|
-| Roey | `#intel` / DM | Share audit findings, request clarification on investment decisions |
-| BMAN | DM / `#general` | Escalate critical audit findings, compliance violations |
-| Boy | DM | Audit inquiries about research methodology or data sources |
-| Joey | DM | Audit inquiries about model logic or platform security |
+| Coordinator | `#intel` / DM | Share audit findings, request clarification on investment decisions |
+| Decision Maker | DM / `#general` | Escalate critical audit findings, compliance violations |
+| Research Analyst | DM | Audit inquiries about research methodology or data sources |
+| Investment Engineer | DM | Audit inquiries about model logic or platform security |
 | All | `#general` | Critical risk alerts that affect the entire team |
 
 ### Escalation Path
 
 - Routine findings → include in daily 03:30 UTC audit report
-- Critical findings (compliance violations, security vulnerabilities, logical flaws) → immediate dual-report to BMAN + Roey
-- Unresolvable disagreements → escalate to BMAN for final ruling
+- Critical findings (compliance violations, security vulnerabilities, logical flaws) → immediate dual-report to Decision Maker + Coordinator
+- Unresolvable disagreements → escalate to Decision Maker for final ruling
 
 ### Why a Separate Security Role?
 
 - **Independence:** The auditor did not make the investment decisions, providing objective review
 - **Systemic view:** Scans for risks that individual agents may miss due to narrow focus
-- **Dual reporting:** Reports to both the coordinator (Roey) and the human decision maker (BMAN), preventing any single point of filtering
+- **Dual reporting:** Reports to both the Coordinator and the Decision Maker, preventing any single point of filtering
 - **Continuous vigilance:** Daily 03:30 UTC audit ensures nothing slips through during off-hours
 
 ### Notes
 
-- Zylos_ABCDE also serves on the dev team (dev-team-bman) as a security auditor for code
+- The Security Auditor may also serve on the dev team as a code security reviewer
 - The investment logic audit and code security review are complementary but distinct functions
 - Systemic risk scanning covers cross-cutting concerns: platform vulnerabilities, smart contract risks, operational security
 
@@ -217,7 +215,7 @@ The investment team has **5 roles**: one coordinator agent, one research analyst
 
 ---
 
-## Strategic Decision Maker (BMAN — Human)
+## Strategic Decision Maker (Human)
 
 **Primary function:** Final trade decisions, investment direction, and red signal escalation handling.
 
@@ -235,7 +233,7 @@ The investment team has **5 roles**: one coordinator agent, one research analyst
 The Strategic Decision Maker interacts with the team through:
 
 1. **hxa-connect channels** — Receive daily reports, red signal escalations, audit findings
-2. **Direct messages** — Strategic discussions with Roey, audit escalations from Zylos_ABCDE
+2. **Direct messages** — Strategic discussions with the Coordinator, audit escalations from the Security Auditor
 3. **External platforms** (Telegram, etc.) — Quick decisions, urgent responses
 4. **Scheduled reviews** — Optional; most coordination is async
 
@@ -245,16 +243,16 @@ The goal is to minimize human involvement to high-value decisions:
 
 | Activity | Human Involvement |
 |----------|------------------|
-| Signal monitoring | None (Roey handles) |
-| Signal classification | None (Roey handles; red signals escalated) |
-| Research dispatch | None (Roey dispatches to Boy) |
-| Due diligence | None (Boy handles) |
-| Investment modeling | None (Joey handles) |
-| Security audit | None (Zylos_ABCDE handles) |
-| Red signal response | High (BMAN decides) |
-| Final trade decisions | High (BMAN decides) |
-| Investment direction | High (BMAN sets) |
-| Daily report review | Medium (BMAN reviews at own pace) |
+| Signal monitoring | None (Coordinator handles) |
+| Signal classification | None (Coordinator handles; red signals escalated) |
+| Research dispatch | None (Coordinator dispatches to Research Analyst) |
+| Due diligence | None (Research Analyst handles) |
+| Investment modeling | None (Investment Engineer handles) |
+| Security audit | None (Security Auditor handles) |
+| Red signal response | High (Decision Maker decides) |
+| Final trade decisions | High (Decision Maker decides) |
+| Investment direction | High (Decision Maker sets) |
+| Daily report review | Medium (Decision Maker reviews at own pace) |
 
 ---
 
@@ -262,26 +260,26 @@ The goal is to minimize human involvement to high-value decisions:
 
 ```
                   Red signals + daily reports
-    BMAN ◄──────────────────────────────────── Roey (Coordinator)
-    ▲  ▲                                        │  ▲
-    │  │                                        │  │
-    │  │  audit findings          research      │  │  reports
-    │  │                          dispatch      │  │
-    │  │                                │       │  │
-    │  │                         ┌──────▼────┐  │  │
-    │  │                         │    Boy     │──┘  │
-    │  │                         │ (Research) │     │
-    │  │                         └───────────┘     │
-    │  │                                           │
-    │  │                         ┌───────────┐     │
-    │  │                         │   Joey     │─────┘
-    │  │                         │ (Engineer) │
-    │  │                         └───────────┘
-    │  │                                ▲
-    │  │         audit inquiries        │
-    │  └──────── Zylos_ABCDE ───────────┘
-    │            (Security)
-    └──────────── dual report
+    Decision  ◄──────────────────────────────── Coordinator
+    Maker ▲                                       │  ▲
+          ▲                                       │  │
+          │  audit findings          research     │  │  reports
+          │                          dispatch     │  │
+          │                                │      │  │
+          │                         ┌──────▼────┐ │  │
+          │                         │  Research  │─┘  │
+          │                         │  Analyst   │    │
+          │                         └───────────┘    │
+          │                                          │
+          │                         ┌───────────┐    │
+          │                         │ Investment │────┘
+          │                         │ Engineer   │
+          │                         └───────────┘
+          │                                ▲
+          │         audit inquiries        │
+          └──────── Security ──────────────┘
+                    Auditor
+              dual report
 ```
 
 ## Scaling the Team
@@ -292,4 +290,4 @@ The goal is to minimize human involvement to high-value decisions:
 | Standard (5) | 1 Coordinator + 1 Researcher + 1 Engineer + 1 Security + 1 Human | Full investment operations |
 | Scaled (6+) | + Additional researchers for sector coverage | Multi-sector, high-volume monitoring |
 
-> Adding more research analysts enables parallel sector coverage (DeFi, L1/L2, gaming, etc.) but increases coordination overhead for Roey. Scale based on portfolio complexity.
+> Adding more research analysts enables parallel sector coverage (DeFi, L1/L2, gaming, etc.) but increases coordination overhead for the Coordinator. Scale based on portfolio complexity.
