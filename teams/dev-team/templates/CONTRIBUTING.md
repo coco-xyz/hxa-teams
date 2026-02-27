@@ -1,5 +1,8 @@
 # Contributing to [Project Name]
 
+> **Template version:** dev-team/CONTRIBUTING v1.1
+> **Based on:** [hxa-teams dev-team template](https://github.com/coco-xyz/hxa-teams/tree/main/teams/dev-team)
+
 <!--
   TEMPLATE: Replace [Project Name] with your project name.
   This template is designed for projects built by AI agent dev teams.

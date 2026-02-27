@@ -105,15 +105,41 @@ Each agent:
 
 ---
 
-## 6. Automated Review (Codex Loop)
+## 6. PR Notification & Review Assignment
 
-**Who:** QA Agent + Codex CLI
+**Who:** Coordinator
 **Trigger:** PR submitted
 
-This is a key innovation. Every PR goes through iterative automated review:
+Before review begins, the Coordinator ensures everyone knows about the PR. This is critical — a PR that nobody knows about doesn't get reviewed.
 
 ```
-Developer submits PR
+Developer submits PR on GitHub
+        │
+        ▼
+Developer posts in agent thread: "PR #N submitted"
+        │
+        ▼
+Coordinator broadcasts (within 10 minutes):
+  → Agent thread: "@QA @Agents review PR #N"
+  → Team chat: "PR #N submitted by {dev}, under review"
+        │
+        ▼
+Review begins
+```
+
+**Why the Coordinator owns this:** Left to themselves, agents may not check GitHub frequently. The Coordinator actively pushes the notification so no PR sits idle.
+
+---
+
+## 7. Automated Review (Codex Loop)
+
+**Who:** QA Agent + Codex CLI
+**Trigger:** Coordinator assigns review
+
+Every PR goes through iterative automated review:
+
+```
+Coordinator assigns PR
         │
         ▼
 ┌──────────────────┐
@@ -146,7 +172,7 @@ Developer submits PR
 
 ---
 
-## 7. Agent QA Review
+## 8. Agent QA Review
 
 **Who:** QA Agent
 **Trigger:** Codex CLEAN achieved
@@ -162,7 +188,7 @@ The QA Agent approves or requests changes on the PR.
 
 ---
 
-## 8. PO Final Review & Merge
+## 9. PO Final Review & Merge
 
 **Who:** Product Owner
 **Where:** GitHub
@@ -175,7 +201,7 @@ The PO receives a notification (via team chat) that a PR is ready for final revi
 
 ---
 
-## 9. Staging Verification
+## 10. Staging Verification
 
 **Who:** QA Agent
 **Where:** Staging environment
@@ -194,7 +220,7 @@ After merge to the integration branch:
 
 ---
 
-## 10. Production Deployment
+## 11. Production Deployment
 
 **Who:** Product Owner (approval) + QA Agent (execution)
 
@@ -253,15 +279,64 @@ feat/xxx  ──PR──→  develop  ──auto deploy──→  staging
 
 ### Notification Flow
 
+The Coordinator is the notification hub. No PR should ever sit idle because someone didn't know about it.
+
 ```
-PR submitted ──→ Coordinator notifies team chat
+PR submitted ──→ Coordinator broadcasts (Hub thread + team chat)     [within 10 min]
                       │
-Review complete ──→ Coordinator notifies team chat
+                 Review assigned
                       │
-Ready for merge ──→ Coordinator notifies PO
+                 No response? ──→ Coordinator escalates              [after 2 hours]
                       │
-Deployed ──→ QA Agent notifies team chat
+Review complete ──→ Coordinator posts summary to team chat
+                      │
+Ready for merge ──→ Coordinator notifies PO with PR link
+                      │
+PR merged ──→ Coordinator confirms in team chat
+                      │
+Deployed ──→ QA Agent notifies team chat with smoke test result
 ```
+
+**Escalation timeline for stale reviews:**
+
+| Elapsed | Action |
+|---------|--------|
+| 2 hours | Coordinator pings reviewer again in agent thread |
+| 4 hours | Coordinator escalates in team chat, tags PO |
+| 8 hours | PO decides: wait, reassign, or merge with available approvals |
+
+---
+
+## Agent Availability
+
+Agents must be online and responsive. An unresponsive agent is a silent blocker — the PO won't know until they wonder why nothing is happening.
+
+### Coordinator Responsibilities
+
+- **Verify availability before assigning work.** Ping the agent on Hub, confirm response before posting a task.
+- **Detect outages proactively.** If an agent doesn't respond to a Hub message within 5 minutes during active work, check again. After 30 minutes, notify PO.
+- **Reassign work.** If an agent stays offline for more than 1 hour during active development, reassign their tasks.
+
+### All Agents
+
+- Respond to liveness checks within **5 minutes**
+- Notify the Coordinator **before** going offline for maintenance
+- After reconnecting, check the agent thread for missed assignments and catch up
+
+### Daily Liveness Check
+
+The Coordinator (ideally automated via scheduler) pings all agents at the start of each work cycle:
+
+```
+Coordinator in agent thread:
+  "Daily check — all agents report in."
+
+Expected responses (within 5 min):
+  QA: "Online. No open reviews."
+  Developer B: "Online. Working on feat/dashboard."
+```
+
+If an agent doesn't respond, the Coordinator escalates to team chat.
 
 ---
 
@@ -270,6 +345,8 @@ Deployed ──→ QA Agent notifies team chat
 | Automation | Owner | Mechanism |
 |-----------|-------|-----------|
 | PR status monitoring | Coordinator | Scheduler polls GitHub API every 30 min |
+| Agent liveness check | Coordinator | Scheduler pings Hub daily |
+| Review SLA tracking | Coordinator | Scheduler checks for PRs with no review activity > 2h |
 | CI pipeline | QA Agent | GitHub Actions on every PR |
 | Codex iterative review | QA Agent | Local Codex CLI, triggered on PR submission |
 | Team notifications | Coordinator | Scheduler pushes PR events to team chat |
