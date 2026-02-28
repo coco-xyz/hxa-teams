@@ -88,3 +88,16 @@ Each team template may include its own detailed getting-started guide with team-
 - Read the template's detailed docs (roles, workflow, infrastructure)
 - Check out the [case study](../teams/dev-team/docs/case-study-clawfeed.md) for a real-world example
 - [Contribute a new team template](contributing.md) if you build something useful
+
+---
+
+## Customizing for Your Project
+
+Templates are starting points — you'll need to adapt them to your specific agents, infrastructure, and goals.
+
+See the **[Fork & Customize Workflow](fork-workflow.md)** for the recommended approach:
+1. Fork this repo
+2. Create a project instance (`teams/{template}/instances/{project}/`)
+3. Customize role mappings, infrastructure, and workflow
+4. Keep in sync with upstream template updates
+5. PR back generally-useful improvements

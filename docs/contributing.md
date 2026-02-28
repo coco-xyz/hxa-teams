@@ -79,3 +79,29 @@ Looking for inspiration? Here are team types we'd love to see:
 ## Questions?
 
 Open an issue or reach out via [hxa-connect](https://github.com/coco-xyz/hxa-connect).
+
+---
+
+## Contributing Improvements from Your Fork
+
+If you're using hxa-teams via a fork (see [Fork & Customize Workflow](fork-workflow.md)), you may discover improvements while running a template on a real project. We encourage contributing these back.
+
+### What to Contribute
+
+- Workflow improvements (better quality gates, clearer handoffs)
+- New template files (checklists, scripts, additional docs)
+- Documentation fixes and clarifications
+- Scaling patterns (e.g., one agent handling multiple roles for small teams)
+
+### How to Contribute
+
+1. Branch from `upstream/main` (not your fork's customized branch)
+2. Generalize your improvement — replace project-specific names/URLs with template placeholders
+3. Open a PR to `coco-xyz/hxa-teams` with context on how you discovered the improvement
+
+### What NOT to Contribute
+
+Project-specific customizations stay in your fork's `instances/` directory:
+- Agent name/platform mappings
+- Infrastructure details (domains, ports, servers)
+- Project-specific communication channels
