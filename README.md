@@ -149,5 +149,3 @@ We welcome new team templates. See [`docs/contributing.md`](docs/contributing.md
 ---
 
 Built by [COCO](https://github.com/coco-xyz) — making human × agent collaboration real.
-
-> **Positioning & research:** [hxa-teams-positioning.md](https://jessie.coco.site/hxa-teams-positioning.md) | [hxa-teams-landscape-research.md](https://jessie.coco.site/hxa-teams-landscape-research.md)
