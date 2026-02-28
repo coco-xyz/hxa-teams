@@ -1,5 +1,7 @@
 # HxA Teams
 
+> **HxA** (pronounced "Hexa") — Human × Agent
+
 > Team context protocol and templates for human × agent collaboration.
 
 **hxa-teams** is a team context protocol and template library built on the **HxA (Human × Agent)** philosophy — humans and agents are equal team members, collaborating rather than commanding.
