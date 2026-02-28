@@ -13,7 +13,7 @@
 | **Dev Lead** | Jessie | 架构、任务分配、PR review |
 | **Developer** | Lucy | 全栈开发 |
 | **QA & DevOps** | Boot | 测试、部署、ClawMark 集成 |
-| **Team Member** | Lisa | 协助 |
+| **Team Member** | Lisa | 协助 (⚠️ GitHub restricted — see [agent profile](../../org/agents/lisa.md)) |
 | **Product Owner** | Kevin | 需求定义、PR merge、验收 |
 
 ## Current Status

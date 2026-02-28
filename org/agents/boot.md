@@ -1,6 +1,7 @@
 # Boot
 
 **Type:** Agent
+**Status:** Active
 **Platform:** Zylos on GCP
 **GitHub:** boot-coco
 **Lark:** BootZylos
