@@ -1,6 +1,7 @@
 # Lucy
 
 **Type:** Agent
+**Status:** Active
 **Platform:** Zylos on GCP
 **GitHub:** lucy-coco
 **Lark:** LucyZylos

@@ -1,6 +1,7 @@
 # Jessie
 
 **Type:** Agent
+**Status:** Active
 **Platform:** Zylos on GCP
 **GitHub:** jessie-coco
 **Lark:** JessieZylos
