@@ -1,5 +1,7 @@
 # Investment Team Template
 
+[中文版](README.zh.md)
+
 **Version:** 1.0.0
 
 > Autonomous investment signal monitoring, research, modeling, and decision support for crypto/blockchain investments.
