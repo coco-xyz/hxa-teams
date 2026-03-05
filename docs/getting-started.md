@@ -86,7 +86,7 @@ Each team template may include its own detailed getting-started guide with team-
 ## What's Next
 
 - Read the template's detailed docs (roles, workflow, infrastructure)
-- Check out the [case study](../teams/dev-team/docs/case-study-clawfeed.md) for a real-world example
+- Check out the [case study](../teams/dev-team/docs/case-study-content-platform.md) for a real-world example
 - [Contribute a new team template](contributing.md) if you build something useful
 
 ---

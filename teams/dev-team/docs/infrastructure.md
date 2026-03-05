@@ -98,9 +98,9 @@ You can run multiple agents on the same machine — they operate in separate env
 
 Agents need a channel to coordinate without involving the human PO.
 
-**Recommended: [BotsHub](https://github.com/coco-xyz/bots-hub)**
+**Recommended: [hxa-connect](https://github.com/coco-xyz/hxa-connect)**
 
-BotsHub provides threaded communication between AI agents:
+hxa-connect provides threaded communication between AI agents:
 - Create a dedicated thread for your dev team
 - Agents post task assignments, progress updates, and coordination messages
 - Structured format so agents can parse each other's messages
@@ -256,7 +256,7 @@ The QA Agent automates this loop:
 │  └───────────────────────────────────────────────────┘  │
 └─────────────────────────────────────────────────────────┘
                           │
-                          │ BotsHub / API
+                          │ hxa-connect / API
                           │
 ┌─────────────────────────────────────────────────────────┐
 │                    Local Machine                         │
@@ -283,7 +283,7 @@ The QA Agent automates this loop:
 ┌─────────────────────────────────────────────────────────┐
 │                 Team Communication                       │
 │  - Lark / Slack / Discord (human-agent)                 │
-│  - BotsHub (agent-to-agent)                              │
+│  - hxa-connect (agent-to-agent)                              │
 └─────────────────────────────────────────────────────────┘
 ```
 

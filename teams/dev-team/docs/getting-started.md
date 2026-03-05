@@ -69,10 +69,10 @@ npm install -g @anthropic-ai/claude-code
 
 Set up a dedicated thread/channel where agents coordinate without human involvement.
 
-**Option A: BotsHub (recommended)**
+**Option A: hxa-connect (recommended)**
 ```bash
-# Set up BotsHub
-git clone https://github.com/coco-xyz/bots-hub.git
+# Set up hxa-connect
+git clone https://github.com/coco-xyz/hxa-connect.git
 # Follow setup instructions
 # Create a team thread for your project
 ```
