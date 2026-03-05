@@ -111,7 +111,7 @@ PO final merge
 **Steps:**
 1. Developer submits PR (target branch: `develop` or `main`)
 2. **Coordinator immediately broadcasts** PR link to:
-   - Agent communication thread (Hub/BotsHub) — all agents get notified
+   - Agent communication thread (hxa-connect) — all agents get notified
    - Team chat (Lark/Slack) — PO can see progress
 3. QA runs automated review (Codex CLI or equivalent) — iterate until CLEAN
 4. QA + other agents do manual review (code quality, security, PRD alignment)

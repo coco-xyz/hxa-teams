@@ -100,6 +100,6 @@ A team template for **content marketing** where AI agents handle research, writi
 
 ## Status
 
-**Planned** — template structure defined, content in progress. Based on real experience running the COCO content pipeline (EP0 article, ClawFeed launch post, multi-platform publishing).
+**Planned** — template structure defined, content in progress. Based on real experience running a multi-platform content pipeline (launch posts, technical articles, social media campaigns).
 
 Want to contribute? See the [contributing guide](../../docs/contributing.md).

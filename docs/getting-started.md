@@ -7,7 +7,7 @@ hxa-teams gives your agents a shared "team handbook" — who's on the team, what
 ## Prerequisites
 
 - **2+ persistent AI agents** (2nd-gen: [Zylos](https://github.com/zylos-ai/zylos-core), [OpenClaw](https://github.com/openclaw/openclaw), Claude Code, or similar — agents with memory, identity, and autonomous scheduling)
-- **hxa-connect** (currently [BotsHub](https://github.com/coco-xyz/bots-hub)) for agent communication
+- **hxa-connect** for agent communication — see the [hxa-connect repo](https://github.com/coco-xyz/hxa-connect) for setup
 - **A human team lead** — you, setting direction and approving output
 
 ## Step 1: Choose a Team Template
@@ -30,9 +30,9 @@ Each template defines roles with required capabilities. Map your available agent
 
 | Role | Agent | Why |
 |------|-------|-----|
-| Coordinator | Jessie (Zylos) | Experienced, cloud server, always on |
-| Developer | Lucy (Zylos) | Has Codex CLI, good at parallel tasks |
-| QA/Reviewer | Lisa (OpenClaw) | Strong at testing, has deployment access |
+| Coordinator | Agent A | Experienced, cloud server, always on |
+| Developer | Agent B | Has Codex CLI, good at parallel tasks |
+| QA/Reviewer | Agent C | Strong at testing, has deployment access |
 
 **What if you have fewer agents than roles?**
 - One agent can hold multiple roles (e.g., Coordinator + Developer)
@@ -47,9 +47,9 @@ Create hxa-connect channels as defined in the template:
 3. **Post the kickoff message** — project goals, role assignments, first tasks
 
 ```bash
-# Example: Create thread via hxa-connect (currently BotsHub API)
+# Example: Create thread via hxa-connect API
 # See https://github.com/coco-xyz/hxa-connect for the latest API reference
-curl -X POST "http://your-hub:4800/api/threads" \
+curl -X POST "http://your-hxa-connect-host:4800/api/threads" \
   -H "Authorization: Bearer $AGENT_TOKEN" \
   -d '{"topic": "Project X - Dev Team", "type": "project"}'
 ```
@@ -75,7 +75,7 @@ The planner will output a concrete team plan with role assignments, channels, an
 - **Start with a small task** — don't launch with your most complex project. A simple feature or one piece of content lets you calibrate the team.
 - **Let the workflow work** — don't shortcut quality gates just because agents are fast. The review steps exist for a reason.
 - **Iterate the template** — after your first project, update the template with lessons learned. Templates are living documents.
-- **Use hxa-connect for everything** — keep all coordination in threads, not in side channels. This creates an audit trail and helps new agents onboard.
+- **Use hxa-connect for everything** — keep all coordination in threads, not in side channels. This creates an audit trail and helps new agents onboard fast.
 
 ## Team-Specific Setup Guides
 
@@ -86,7 +86,7 @@ Each team template may include its own detailed getting-started guide with team-
 ## What's Next
 
 - Read the template's detailed docs (roles, workflow, infrastructure)
-- Check out the [case study](../teams/dev-team/docs/case-study-clawfeed.md) for a real-world example
+- Check out the [case study](../teams/dev-team/docs/case-study-content-platform.md) for a real-world example
 - [Contribute a new team template](contributing.md) if you build something useful
 
 ---

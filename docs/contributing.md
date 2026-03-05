@@ -97,7 +97,22 @@ If you're using hxa-teams via a fork (see [Fork & Customize Workflow](fork-workf
 
 1. Branch from `upstream/main` (not your fork's customized branch)
 2. Generalize your improvement — replace project-specific names/URLs with template placeholders
-3. Open a PR to `coco-xyz/hxa-teams` with context on how you discovered the improvement
+3. **Run the desensitization checklist** (see below)
+4. Open a PR to `coco-xyz/hxa-teams` with context on how you discovered the improvement
+
+### Desensitization Checklist
+
+Before submitting a PR, verify your content is fully desensitized:
+
+- [ ] No real person names (replace with Agent A / Agent B / Human Lead)
+- [ ] No real domain names or URLs (use `example.com` or `your-org` placeholders)
+- [ ] No real thread IDs, group IDs, or API tokens
+- [ ] No real organization or company names
+- [ ] No real project names that could identify the source (use generic names like "content platform")
+- [ ] No real GitHub usernames or email addresses
+- [ ] Commit author uses a generic or noreply email (not a company domain)
+
+**Quick scan:** `grep -riE "(your-company|real-name|internal-domain)" --include="*.md"` should return nothing.
 
 ### What NOT to Contribute
 

@@ -72,8 +72,6 @@ Every team template is built around [**hxa-connect**](https://github.com/coco-xy
 
 Each template explicitly defines **how agents communicate** — which channels to create, message formats, escalation paths. hxa-connect is the neural system; team templates are the playbook.
 
-> **Current implementation:** hxa-connect runs on [BotsHub](https://github.com/coco-xyz/bots-hub). See [hxa-connect repo](https://github.com/coco-xyz/hxa-connect) for migration plan.
-
 ## Planner
 
 The [`planner/`](planner/) directory contains the system prompt that turns a team template + user inputs into an actionable team plan. Give it to any capable LLM agent and it will:
@@ -90,11 +88,16 @@ See [`planner/system-prompt.md`](planner/system-prompt.md) for the full prompt.
 
 Team templates follow a [standard schema](schema/team-template-spec.md) to ensure consistency and quality. This makes it possible for external contributors to submit new team types that work out of the box.
 
+## Team Configuration
+
+Each repo that adopts hxa-teams can include a `.hxa-teams.yml` at the root to declare its team structure — members, roles, communication channels, and workspace paths. See [`.hxa-teams.yml.example`](.hxa-teams.yml.example) for a template.
+
 ## Directory Structure
 
 ```
 hxa-teams/
 ├── README.md                    # This file
+├── .hxa-teams.yml.example       # Team config template
 ├── planner/
 │   └── system-prompt.md         # Planner prompt for generating team plans
 ├── schema/
@@ -114,8 +117,21 @@ hxa-teams/
 │   │   └── README.md
 │   └── marketing-team/          # Content marketing team (planned)
 │       └── README.md
+├── wiki/
+│   ├── README.md                # Wiki index
+│   ├── multi-agent-dev-workflow.md   # Multi-agent development patterns
+│   ├── communication-protocols.md    # Channel and escalation rules
+│   └── release-process.md            # Release checklist and roles
+├── devops/
+│   └── git-branching-workflow.md     # Branch strategy for agent teams
+├── org/
+│   └── conventions/
+│       └── pr-review.md              # PR review matrix, SLA, anti-patterns
+├── workspaces/
+│   └── README.md                # Per-agent workspace guide
 └── docs/
     ├── getting-started.md       # How to use hxa-teams
+    ├── codex-review-workflow.md # AI-assisted code review loop
     └── contributing.md          # How to contribute a new team template
 ```
 

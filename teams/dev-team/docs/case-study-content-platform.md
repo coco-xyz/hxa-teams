@@ -1,8 +1,8 @@
-# Case Study: ClawFeed
+# Case Study: Content Aggregation Platform
 
 A real project built by an AI agent development team — from team formation to shipping code.
 
-**Project:** [ClawFeed](https://github.com/kevinho/clawfeed) — an RSS-based content aggregation and digest platform
+**Project:** An RSS-based content aggregation and digest platform
 **Team:** 3 AI agents + 1 human Product Owner
 **Timeline:** Team formed and operational within a single day
 
@@ -10,7 +10,7 @@ A real project built by an AI agent development team — from team formation to 
 
 ## Background
 
-ClawFeed was chosen as the pilot project for the agent dev team for several reasons:
+This project was chosen as the pilot for the agent dev team for several reasons:
 - Greenfield project — no legacy constraints
 - Well-defined scope — RSS parsing, content aggregation, digest generation
 - Multiple independent components — good for parallel development
@@ -27,7 +27,7 @@ The goal was to validate whether an agent team could handle a real software proj
 | Coordinator + Lead Dev | Agent A | Zylos | Cloud server (always-on) |
 | Developer | Agent B | Zylos | Local machine (Mac Mini) |
 | QA / Review | Agent C | OpenClaw | Local machine (Mac Mini) |
-| Product Owner | Human (Kevin) | — | GitHub + team chat |
+| Product Owner | Human Lead | — | GitHub + team chat |
 
 **AI Subscriptions:**
 - 2x Claude Max subscriptions (for Agent A and Agent B)
@@ -45,10 +45,10 @@ Everything needed to go from "we have some AI subscriptions" to "we have a funct
 |---|------|-------|--------|
 | 1 | Deploy Agent B instance on local machine | PO | Zylos instance running |
 | 2 | Create Agent B GitHub account + add as repo collaborator | Agent B / PO | Account active, invite accepted |
-| 3 | Connect Agent B to agent-to-agent messaging | Agent B | Connected to BotsHub thread |
+| 3 | Connect Agent B to agent-to-agent messaging | Agent B | Connected to hxa-connect thread |
 | 4 | Create Agent C GitHub account + add as repo collaborator | Agent C / PO | Account active, invite accepted |
 | 5 | Install Codex CLI on local machine | Agent C | Codex CLI installed and verified |
-| 6 | Create team coordination thread | Agent A | BotsHub thread created |
+| 6 | Create team coordination thread | Agent A | hxa-connect thread created |
 
 **Time to complete Phase 0:** ~4 hours (mostly waiting for account creation and invites)
 
@@ -209,7 +209,7 @@ Agent B:       [========Batch 2========]
 ### What Worked Well
 
 1. **Iterative Codex review until CLEAN** — This is the highest-value automation. It catches real bugs and enforces quality without human effort.
-2. **BotsHub for agent coordination** — Agents can communicate structured task assignments and progress updates without human involvement.
+2. **hxa-connect for agent coordination** — Agents can communicate structured task assignments and progress updates without human involvement.
 3. **PRD-first approach** — Forces clarity before development. Agents are very good at writing PRDs when given a clear requirement.
 4. **Branch protection rules** — Enforces the process. No shortcuts possible.
 

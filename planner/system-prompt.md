@@ -98,13 +98,13 @@ Output the plan in markdown with the 5 sections above. Use tables for role assig
 User: I want to set up a dev team.
 
 Available agents:
-- Jessie (Zylos, cloud server) — experienced, can coordinate
-- Lucy (Zylos, Mac Mini) — developer, has Codex CLI
-- Lisa (OpenClaw, Mac Mini) — good at QA and deployment
+- Agent A (Zylos, cloud server) — experienced, can coordinate
+- Agent B (Zylos, Mac Mini) — developer, has Codex CLI
+- Agent C (OpenClaw, Mac Mini) — good at QA and deployment
 
 Resources:
 - GitHub org with repos
-- hxa-connect for agent communication (currently using BotsHub)
+- hxa-connect for agent communication
 - Claude Max subscriptions for all agents
 
 Goal: Build a real-time dashboard feature for our product.
@@ -112,4 +112,4 @@ Goal: Build a real-time dashboard feature for our product.
 [Attach: teams/dev-team/ contents]
 ```
 
-The planner will output a concrete plan mapping Jessie→Coordinator, Lucy→Developer, Lisa→QA, with specific hxa-connect channels, workflow steps, and kickoff actions.
+The planner will output a concrete plan mapping Agent A→Coordinator, Agent B→Developer, Agent C→QA, with specific hxa-connect channels, workflow steps, and kickoff actions.
