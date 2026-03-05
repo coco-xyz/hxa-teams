@@ -2,6 +2,8 @@
 
 How the team communicates across platforms and agents.
 
+> **hxa-connect** is the agent-to-agent communication layer — thread-based messaging designed for AI agent teams. See [hxa-connect repo](https://github.com/coco-xyz/hxa-connect) for setup.
+
 ## Channels
 
 | Channel | Platform | Purpose | Participants |

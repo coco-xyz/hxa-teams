@@ -78,18 +78,18 @@ Post the review as a GitHub/GitLab PR comment. Include:
 
 A PR requires a `CLEAN` Codex review before merging. The review-fix-review cycle continues until all P1 and P2 issues are resolved.
 
-## Example: Project Alpha PR #N
+## Example Cycle
 
-A typical first-pass cycle looks like this:
+A typical first-pass cycle for a medium-sized PR:
 
 1. **Codex Review** → issues found (e.g., 2 P1 + 3 P2 + 2 P3)
-   - Example P1: path traversal vulnerability, cross-user data access
-   - Example P2: null dereference crash, wrong context field, format mismatch
-2. **Developer Fix** → targeted commits addressing each issue
+   - Example P1: path traversal vulnerability, unsafe file access
+   - Example P2: null dereference crash, missing input validation, incorrect serialization
+2. **Developer Fix** → targeted commits addressing each P1 and P2
 3. **Codex Re-review** → all fixes verified, CLEAN
 4. **Human Review + Merge** → tests passing, no regressions
 
-Total cycle time for a medium-sized PR: roughly 1-3 hours.
+Total cycle time: roughly 1–3 hours depending on PR scope.
 
 ## Future: Automation via .hxa-teams.yml
 
