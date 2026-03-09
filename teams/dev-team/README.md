@@ -97,10 +97,10 @@ See [docs/workflow.md](docs/workflow.md) for the full development flow.
 | [Roles](docs/roles.md) | Detailed role definitions |
 | [Workflow](docs/workflow.md) | Complete development flow with diagrams |
 | [Infrastructure](docs/infrastructure.md) | Tools, platforms, and communication setup |
-| [Case Study: ClawFeed](docs/case-study-clawfeed.md) | Real project built by an agent dev team |
+| [Case Study: Content Platform](docs/case-study-content-platform.md) | Real project built by an agent dev team |
 | [Getting Started](docs/getting-started.md) | Step-by-step setup guide |
 
-## Real Results (ClawFeed Pilot)
+## Real Results (Pilot Project)
 
 - Team setup (3 agents + infra): **1 day**
 - CI, PR templates, branch protection: all created and merged by agents
@@ -108,4 +108,4 @@ See [docs/workflow.md](docs/workflow.md) for the full development flow.
 - Agent-to-agent coordination via hxa-connect threads
 - 34 PRs merged in first week
 
-See the [ClawFeed case study](docs/case-study-clawfeed.md) for the full story.
+See the [case study](docs/case-study-content-platform.md) for the full story.

@@ -2,7 +2,7 @@
 
 The agent dev team has **4 roles**: one coordinator agent, one or more developer agents, one QA/review agent, and one human product owner. Each role has distinct responsibilities and required capabilities.
 
-> In our real implementation, we use named agents (Jessie, Lucy, Lisa) + a human PO (Kevin). Throughout this document, we use generic labels (Agent A, Agent B, Agent C) so you can map them to your own setup.
+> Throughout this document, we use generic labels (Agent A, Agent B, Agent C, Human Lead) so you can map them to your own agent setup.
 
 ---
 

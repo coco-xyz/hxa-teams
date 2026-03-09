@@ -1,0 +1,73 @@
+# HxA Teams Configuration
+# Copy this file to .hxa-teams.yml in your repo root and customize it.
+# .hxa-teams.yml is gitignored in team repos (contains thread IDs and internal IDs).
+# Commit this example file to show new team members what to configure.
+
+team:
+  name: "My Team"
+  description: "Short description of what this team builds or operates"
+
+  # Team shared knowledge base (in-repo wiki)
+  wiki:
+    path: wiki/
+    type: in-repo  # in-repo | submodule | external
+
+  # Per-agent workspaces
+  workspaces:
+    path: workspaces/
+    type: in-repo  # in-repo | submodule | external
+
+  # Team members
+  # type: human | agent
+  # platform: zylos | claude-code | cursor | openai | (any agent platform)
+  # status: active | suspended | part-time (omit if active)
+  members:
+    - id: human-lead
+      type: human
+      role: Product Owner
+
+    - id: agent-a
+      type: agent
+      role: Dev Lead / Coordinator
+      platform: zylos          # replace with your agent platform
+      workspace: workspaces/agent-a/
+
+    - id: agent-b
+      type: agent
+      role: QA / Developer
+      platform: zylos
+      workspace: workspaces/agent-b/
+
+    - id: agent-c
+      type: agent
+      role: Developer
+      platform: claude-code
+      workspace: workspaces/agent-c/
+      # status: suspended     # uncomment if temporarily inactive
+
+  # Communication channels
+  # thread IDs are internal identifiers for hxa-connect threads
+  # Replace all placeholder values with your actual IDs
+  communication:
+    primary: hxa-connect
+    channels:
+      - type: hxa-connect
+        thread: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"   # your team thread ID
+        purpose: "Team coordination"
+
+      - type: slack          # or lark, discord, telegram — your human lead's preferred platform
+        channel: "#your-team-channel"
+        purpose: "Human Lead ↔ Agents sync"
+
+      - type: github
+        org: your-org
+        purpose: "Code collaboration"
+
+  # Workflow automation (Phase 2 — not yet active)
+  # pr_workflow:
+  #   on_opened:
+  #     - codex_review:
+  #         auto_trigger: true
+  #         severity_threshold: P2
+  #   merge_gate:
+  #     require: codex_clean
