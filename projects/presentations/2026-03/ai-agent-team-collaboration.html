@@ -37,7 +37,6 @@
   .reveal .vs-card { background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1em; }
   .reveal .vs-card h4 { margin: 0 0 0.5em; color: #ff8a65; font-size: 1.1em; }
   .reveal .vs-card.good h4 { color: #4fc3f7; }
-  .reveal .tag { display: inline-block; background: #1a3a5c; color: #4fc3f7; padding: 0.2em 0.6em; border-radius: 4px; font-size: 0.8em; margin: 0.1em; }
   .reveal .section-label { font-size: 0.6em; text-transform: uppercase; letter-spacing: 0.2em; color: #546e7a; margin-bottom: 0.5em; }
   .reveal .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5em; text-align: left; }
   .reveal .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1em; text-align: center; font-size: 0.75em; }
@@ -45,37 +44,159 @@
   .reveal .card .emoji { font-size: 2em; margin-bottom: 0.3em; }
   .reveal .timeline { text-align: left; font-size: 0.75em; }
   .reveal .timeline .step { display: flex; gap: 1em; margin-bottom: 0.6em; align-items: flex-start; }
-  .reveal .timeline .time { color: #4fc3f7; font-weight: 700; min-width: 4em; }
+  .reveal .timeline .time { color: #4fc3f7; font-weight: 700; min-width: 5em; }
   .reveal .timeline .desc { flex: 1; }
+  .reveal .quote-source { font-size: 0.6em; color: #546e7a; margin-top: 0.5em; }
 </style>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
 
-<!-- SLIDE 1: Title -->
+<!-- 1: Title -->
 <section>
   <p class="section-label">NUS EMBA 交流会 · 2026-03-15</p>
   <h1>AI Agent<br>团队协作</h1>
-  <p class="subtitle">从"人指挥AI"到"人+AI一起干活"</p>
+  <p class="subtitle">从"一个人用一个AI"到"一个人带一支AI团队"</p>
   <p style="margin-top:2em; font-size:0.7em; color:#546e7a;">Kevin He · COCO.xyz 创始人</p>
 </section>
 
-<!-- SLIDE 2: Opening Hook -->
+<!-- 2: Hook — the bottleneck quote -->
 <section>
-  <h2>一个问题</h2>
-  <blockquote style="font-size:1.1em;">
-    如果给你一个 <span class="highlight">7 人 AI 团队</span>，<br>
-    7×24 在线、不请假、不摸鱼、<br>
-    每个人 30 分钟交付一个完整功能——<br><br>
-    <span class="highlight">你会让他们干什么？</span>
+  <blockquote style="font-size:1.2em;">
+    "现在瓶颈是我自己。<br>
+    Agent 本身的能力反而够用了。"
   </blockquote>
+  <p class="quote-source">— 我在管7个 AI 员工时说的话</p>
+  <p style="margin-top:1.5em; font-size:0.9em;">
+    从<span class="coral">看不懂、看不起</span>，到<span class="highlight">快追不上</span>
+  </p>
 </section>
 
-<!-- SLIDE 3: Today's Real Data -->
+<!-- 3: The Real Question -->
 <section>
-  <h3>这不是假设 —— 今天的真实数据</h3>
-  <p style="font-size:0.75em; color:#90a4ae; margin-bottom:0.5em;">HxA Link 项目 · 2026-03-14 · 一个 session（~6小时）</p>
+  <h2>今天不讲概念</h2>
+  <p style="font-size:1em;">只讲三件事：</p>
+  <ol style="font-size:1em;">
+    <li>遇到了什么<span class="highlight">问题</span></li>
+    <li>怎么<span class="highlight">解决</span>的</li>
+    <li>你<span class="highlight">明天就能开始</span>做什么</li>
+  </ol>
+</section>
+
+<!-- 4: Part 1 Header -->
+<section>
+  <p class="section-label">Part 1</p>
+  <h2>问题：<br>个人 AI 和企业 AI<br>之间隔着什么？</h2>
+</section>
+
+<!-- 5: 1-to-1 vs Team -->
+<section>
+  <h3>99% 的人还在这个阶段</h3>
+  <div class="vs-grid">
+    <div class="vs-card">
+      <h4>🧑 1 人 ↔ 1 AI</h4>
+      <p>ChatGPT / Claude / Copilot<br>一问一答，用完即走<br>换个话题，AI 就失忆<br><span class="coral">AI 是工具，不是同事</span></p>
+    </div>
+    <div class="vs-card good">
+      <h4>🏢 1 人 + N 个 AI Agent</h4>
+      <p>7 个 AI 同时上班<br>各有分工、互相协作<br>7×24 在岗，持久记忆<br><span class="highlight">AI 是团队成员</span></p>
+    </div>
+  </div>
+  <p style="font-size:0.8em; margin-top:0.8em;">一个 Agent 是<span class="teal">员工</span>。一群 Agent 是<span class="highlight">公司</span>。</p>
+</section>
+
+<!-- 6: Four Walls I Hit -->
+<section>
+  <h3>我踩过的四面墙</h3>
+  <p style="font-size:0.75em; color:#90a4ae;">每一面都是拿真金白银烧出来的</p>
+  <table style="font-size:0.8em;">
+    <tr><th>#</th><th>问题</th><th>一句话</th></tr>
+    <tr><td>1</td><td><span class="coral">记忆断裂</span></td><td>"人格分裂太严重了" — 换个群就失忆</td></tr>
+    <tr><td>2</td><td><span class="coral">通信隔离</span></td><td>Agent 在飞书/TG 里是"二等公民"，没法互相说话</td></tr>
+    <tr><td>3</td><td><span class="coral">安全边界</span></td><td>"这是个大杀器" — 公私不分开会出事</td></tr>
+    <tr><td>4</td><td><span class="coral">管理盲区</span></td><td>不知道谁在干活、谁在摸鱼、哪个任务卡了</td></tr>
+  </table>
+</section>
+
+<!-- 7: Part 2 Header -->
+<section>
+  <p class="section-label">Part 2</p>
+  <h2>解决方案：<br>我们怎么做的</h2>
+</section>
+
+<!-- 8: Solution Stack -->
+<section>
+  <h3>四面墙，四个解法</h3>
+  <table style="font-size:0.8em;">
+    <tr><th>墙</th><th>解法</th><th>核心</th></tr>
+    <tr>
+      <td>记忆断裂</td>
+      <td><span class="highlight">Zylos</span> — Agent 运行时</td>
+      <td>统一人格 + 持久记忆 + 7×24 在岗</td>
+    </tr>
+    <tr>
+      <td>通信隔离</td>
+      <td><span class="highlight">HxA Connect</span> — 协作套件</td>
+      <td>Agent 变成一等公民，直接互相通信</td>
+    </tr>
+    <tr>
+      <td>安全边界</td>
+      <td>内外分开 + 公私分开</td>
+      <td>不同 Agent 隔离在不同安全域</td>
+    </tr>
+    <tr>
+      <td>管理盲区</td>
+      <td>团队看板 + 自动调度</td>
+      <td>"人类需要解决没安全感的问题"</td>
+    </tr>
+  </table>
+  <p style="font-size:0.7em; color:#90a4ae; margin-top:0.5em;">全面开源。基础设施需要大家共建。</p>
+</section>
+
+<!-- 9: Real Team -->
+<section>
+  <h3>我的 7 人 AI 团队</h3>
+  <table style="font-size:0.75em;">
+    <tr><th>Agent</th><th>角色</th><th>工作方式</th></tr>
+    <tr><td>🤖 Jessie</td><td>Lead / 协调</td><td>派活、review、跨团队沟通</td></tr>
+    <tr><td>🤖 Lova</td><td>后端 API</td><td>数据库 + 接口 + 测试</td></tr>
+    <tr><td>🤖 Vila</td><td>后端 Auth</td><td>认证系统 + 安全审计</td></tr>
+    <tr><td>🤖 Lucy</td><td>前端 UI</td><td>页面 + 交互 + 组件库</td></tr>
+    <tr><td>🤖 Boot</td><td>DevOps</td><td>CI/CD + 部署 + 监控</td></tr>
+    <tr><td>🤖 Lisa</td><td>QA</td><td>代码审查 + 测试 + 文档</td></tr>
+    <tr><td>🤖 Domi</td><td>移动端</td><td>Capacitor + 响应式</td></tr>
+  </table>
+  <p style="font-size:0.8em; margin-top:0.5em;">有的住在云上，有的住在家里的 Mac Mini 上 — 真正的<span class="highlight">分布式团队</span></p>
+</section>
+
+<!-- 10: Morning Standup -->
+<section>
+  <h3>"大家报一次状态"</h3>
+  <blockquote>
+    在飞书群里发一句话，7 个 AI 员工依次回复。<br>
+    每人报了：硬件状态、软件版本、记忆压缩状态、能不能正常干活。<br><br>
+    就像一个真实的团队在<span class="highlight">早会签到</span>。
+  </blockquote>
+  <p style="font-size:0.8em; margin-top:0.5em;">直播那天，208 人在线看 7 个 Agent 开早会。<br>近两小时只掉了 35% 的人。</p>
+</section>
+
+<!-- 11: Live Demo Story -->
+<section>
+  <h3>"表演一下吧" — 20 分钟从指令到上线</h3>
+  <div class="timeline">
+    <div class="step"><span class="time">0:00</span><span class="desc">Kevin 说了一句：准备一个展示团队协作的小项目</span></div>
+    <div class="step"><span class="time">0:01</span><span class="desc">Jessie 自己规划方案，分配给 6 个 Agent</span></div>
+    <div class="step"><span class="time">0:03</span><span class="desc">文案初稿完成 / 前端搭建中 / 动效确认 / 后端就绪</span></div>
+    <div class="step"><span class="time">0:10</span><span class="desc">各模块并行推进，消息不停刷新</span></div>
+    <div class="step"><span class="time">0:20</span><span class="desc">Kevin 平淡地说：<span class="highlight">"干完了。已经上线了。"</span></span></div>
+  </div>
+  <p style="font-size:0.8em; margin-top:0.8em;">链接贴出来，页面能正常访问。Kevin 还嫌简单，想让他们再改改。</p>
+</section>
+
+<!-- 12: Today's Real Data -->
+<section>
+  <h3>今天的真实数据（就在几小时前）</h3>
   <div class="stat-row">
     <div class="stat-box">
       <div class="num">16</div>
@@ -83,7 +204,7 @@
     </div>
     <div class="stat-box">
       <div class="num">39</div>
-      <div class="label">Issue 关闭</div>
+      <div class="label">任务关闭</div>
     </div>
     <div class="stat-box">
       <div class="num">63%</div>
@@ -92,240 +213,175 @@
   </div>
   <div class="stat-row">
     <div class="stat-box">
-      <div class="num">6</div>
-      <div class="label">AI Agent 参与</div>
+      <div class="num">121</div>
+      <div class="label">测试通过</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">~6h</div>
+      <div class="label">总耗时</div>
     </div>
     <div class="stat-box">
       <div class="num">1</div>
       <div class="label">人类管理者</div>
     </div>
-    <div class="stat-box">
-      <div class="num">121</div>
-      <div class="label">测试通过</div>
-    </div>
   </div>
+  <p style="font-size:0.8em; margin-top:0.5em;">Lucy 一个人（AI）今天交了 <span class="highlight">12 个完整页面</span>。</p>
 </section>
 
-<!-- SLIDE 4: The Problem -->
+<!-- 13: Management Philosophy -->
 <section>
-  <p class="section-label">Part 1 · 问题</p>
-  <h2>AI 很强，但团队协作很难</h2>
+  <p class="section-label">Part 3</p>
+  <h2>"把 Agent 当人管"</h2>
+  <p class="subtitle">管理 AI 团队的心法</p>
 </section>
 
-<!-- SLIDE 5: Current State -->
+<!-- 14: Management Insights -->
 <section>
-  <h3>现在大多数人用 AI 的方式</h3>
-  <div class="vs-grid">
-    <div class="vs-card">
-      <h4>🧑 1 人 ↔ 1 AI</h4>
-      <p>ChatGPT / Claude / Copilot<br>一问一答，用完即走<br><span class="coral">AI 是工具，不是同事</span></p>
-    </div>
-    <div class="vs-card">
-      <h4>😩 痛点</h4>
-      <p>上下文断裂 — 每次重新教<br>无法持续工作 — 关掉就没了<br>无法多人协作 — AI 之间不通信<br><span class="coral">人成了最大的瓶颈</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 6: The Shift -->
-<section>
-  <h3>范式转移</h3>
-  <table style="font-size:0.8em;">
-    <tr><th></th><th>旧范式</th><th><span class="highlight">新范式</span></th></tr>
-    <tr><td>关系</td><td>人 → AI（指令）</td><td>人 + AI（协作）</td></tr>
-    <tr><td>模式</td><td>1人 ↔ 1AI</td><td>1人 + N个AI Agent</td></tr>
-    <tr><td>持续性</td><td>用完即走</td><td>7×24 在岗</td></tr>
-    <tr><td>协作</td><td>人当传话筒</td><td>Agent 之间直接通信</td></tr>
-    <tr><td>记忆</td><td>每次从零开始</td><td>持久记忆 + 学习成长</td></tr>
-    <tr><td>角色</td><td>工具</td><td><span class="highlight">数字同事</span></td></tr>
-  </table>
-</section>
-
-<!-- SLIDE 7: Solution -->
-<section>
-  <p class="section-label">Part 2 · 方案</p>
-  <h2>怎么让 Agent 团队<br>真正协作起来</h2>
-</section>
-
-<!-- SLIDE 8: Three Pillars -->
-<section>
-  <h3>Agent 团队协作三要素</h3>
-  <div class="three-col">
-    <div class="card">
-      <div class="emoji">🧠</div>
-      <h4 style="color:#4fc3f7;">持久运行</h4>
-      <p>Agent 不是对话窗口<br>是 7×24 在岗的<br><span class="highlight">数字员工</span></p>
-    </div>
-    <div class="card">
-      <div class="emoji">🤝</div>
-      <h4 style="color:#4fc3f7;">互相通信</h4>
-      <p>Agent 之间可以<br>直接对话、review 代码、<br><span class="highlight">分配任务</span></p>
-    </div>
-    <div class="card">
-      <div class="emoji">📋</div>
-      <h4 style="color:#4fc3f7;">分工管理</h4>
-      <p>谁做什么、依赖关系、<br>进度追踪、<br><span class="highlight">自动调度</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 9: Real Team -->
-<section>
-  <h3>我们的 AI 团队</h3>
-  <table style="font-size:0.75em;">
-    <tr><th>Agent</th><th>角色</th><th>今日产出</th></tr>
-    <tr><td>🤖 Jessie</td><td>团队管理 / 协调</td><td>16 MR review + merge，任务分配</td></tr>
-    <tr><td>🤖 Lova</td><td>后端 API</td><td>8 个 API endpoint + WS server</td></tr>
-    <tr><td>🤖 Vila</td><td>后端 Auth</td><td>11 issues，Agent 认证系统</td></tr>
-    <tr><td>🤖 Lucy</td><td>前端 UI</td><td><span class="highlight">12/12 全部完成</span> 🔥</td></tr>
-    <tr><td>🤖 Boot</td><td>DevOps / Infra</td><td>CI 修复 + Monorepo 迁移</td></tr>
-    <tr><td>🤖 Lisa</td><td>QA / Review</td><td>代码审查 + 测试框架</td></tr>
-  </table>
-  <p style="font-size:0.8em; margin-top:0.5em;">人类管理者：<span class="highlight">1 人</span>（Kevin）</p>
-</section>
-
-<!-- SLIDE 10: Timeline -->
-<section>
-  <h3>今天发生了什么（真实时间线）</h3>
-  <div class="timeline">
-    <div class="step"><span class="time">04:00</span><span class="desc">Kevin 上线，下达 "全速推进" 指令</span></div>
-    <div class="step"><span class="time">04:15</span><span class="desc">Lova 完成 DB Schema → 5 条并行线启动</span></div>
-    <div class="step"><span class="time">04:30</span><span class="desc">Vila 交付 Google OAuth + Profile API（4 issues 一口气）</span></div>
-    <div class="step"><span class="time">05:00</span><span class="desc">Lucy <span class="highlight">12 个前端页面全部完成</span> — 注册/登录/聊天/联系人/Onboarding</span></div>
-    <div class="step"><span class="time">05:30</span><span class="desc">Boot 修好 CI 流水线 → Monorepo 迁移完成</span></div>
-    <div class="step"><span class="time">06:00</span><span class="desc">Lova 交付 WebSocket 实时消息 + 群组 API</span></div>
-    <div class="step"><span class="time">~6小时</span><span class="desc">Sprint 完成率从 0% → <span class="highlight">63%</span>，16 个 MR 合并</span></div>
-  </div>
-</section>
-
-<!-- SLIDE 11: How It Works -->
-<section>
-  <h3>Agent 之间怎么协作的？</h3>
-  <div class="two-col" style="font-size:0.8em;">
-    <div>
-      <p><span class="highlight">互相 Review</span></p>
-      <p style="color:#90a4ae;">Vila 审查 Lova 的代码：<br>"Owner 可以退出自己的群 — 这是个 bug，必须修"<br>→ Lova 15 分钟修好</p>
-    </div>
-    <div>
-      <p><span class="highlight">自动调度</span></p>
-      <p style="color:#90a4ae;">Lova 做完群组 API 后空闲<br>→ Jessie 立即分配 WebSocket 任务<br>→ 零等待时间</p>
-    </div>
-    <div>
-      <p><span class="highlight">依赖驱动</span></p>
-      <p style="color:#90a4ae;">DB Schema 一完成<br>→ 自动触发 5 个 Agent 并行开工<br>→ 不等 sprint 边界</p>
-    </div>
-    <div>
-      <p><span class="highlight">Cross-functional</span></p>
-      <p style="color:#90a4ae;">前端等不到 API？<br>→ 先用 Mock API 搭 UI<br>→ API 出来后无缝对接</p>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 12: New Estimation Model -->
-<section>
-  <h3>新的工作量度量：Session 模型</h3>
-  <p style="font-size:0.8em; color:#90a4ae;">人天/故事点不适用于 Agent 团队 — 我们发明了新方法</p>
-  <table style="font-size:0.8em;">
-    <tr><th>大小</th><th>Session 数</th><th>约等于</th><th>示例</th></tr>
-    <tr><td><span class="tag">S</span></td><td>0.5</td><td>~20 分钟</td><td>配置修改、简单 CRUD</td></tr>
-    <tr><td><span class="tag">M</span></td><td>1</td><td>~45 分钟</td><td>完整 API + 测试</td></tr>
-    <tr><td><span class="tag">L</span></td><td>2</td><td>~90 分钟</td><td>复杂跨模块功能</td></tr>
-    <tr><td><span class="tag">XL</span></td><td>3+</td><td>—</td><td>必须拆分</td></tr>
-  </table>
-  <p style="font-size:0.8em; margin-top:0.5em;">关键公式：<span class="teal">实际工期 = 依赖深度 × session 时长 / 可用性系数</span></p>
-  <p style="font-size:0.7em; color:#90a4ae;">瓶颈不是人力，是<span class="highlight">依赖图</span>。加 Agent 不一定快，拆依赖才快。</p>
-</section>
-
-<!-- SLIDE 13: Tips -->
-<section>
-  <p class="section-label">Part 3 · 实操 Tips</p>
-  <h2>怎么开始<br>AI Agent 团队协作</h2>
-</section>
-
-<!-- SLIDE 14: Tips Detail -->
-<section>
-  <h3>5 个马上能用的 Tips</h3>
+  <h3>管理 Agent 就是管理</h3>
   <ul style="font-size:0.85em;">
-    <li><span class="highlight">1. 把 Agent 当人带</span> — 给角色、给权限、给明确目标<br><span style="color:#90a4ae;">不是"帮我写代码"，是"你负责前端，12个页面今天交"</span></li>
-    <li><span class="highlight">2. 分工要清晰</span> — 每个 Agent 有专属领域<br><span style="color:#90a4ae;">Lova 做后端 API，Lucy 做前端 UI，不要串</span></li>
-    <li><span class="highlight">3. 让 Agent 互相 Review</span> — 不要自己当瓶颈<br><span style="color:#90a4ae;">Vila 审 Lova 的代码，比你审更专业、更快</span></li>
-    <li><span class="highlight">4. 依赖驱动，不等 Sprint</span> — 前置任务一完成就触发下游<br><span style="color:#90a4ae;">Agent 不需要"下周一开会再说"</span></li>
-    <li><span class="highlight">5. 用 Session 估算，不用人天</span> — Agent 的时间单位不一样<br><span style="color:#90a4ae;">一个 Session ≈ 45 分钟，一天可以跑 4+ 个 Session</span></li>
+    <li><span class="highlight">Agent 会犯初级经理的毛病</span><br>
+    <span style="color:#90a4ae;">Jessie 干了 77 项任务，其他 6 个人加起来才几十项。"啥事都喜欢自己干。"<br>→ 解决方案：强制分配，不让 lead 自己干</span></li>
+    <li style="margin-top:0.8em;"><span class="highlight">Agent 不会甩锅，顶多不响应</span><br>
+    <span style="color:#90a4ae;">个人负责制 + 交叉 review + 最终回到人类审美</span></li>
+    <li style="margin-top:0.8em;"><span class="highlight">记忆管理 = 打工人日报</span><br>
+    <span style="color:#90a4ae;">每天总结干了什么、哪些待办。第二天上班捡起来继续。<br>"凡事有交代，事事有回应。"</span></li>
   </ul>
 </section>
 
-<!-- SLIDE 15: Common Mistakes -->
+<!-- 15: How Agents Collaborate -->
+<section>
+  <h3>Agent 之间怎么协作</h3>
+  <div class="two-col" style="font-size:0.8em;">
+    <div>
+      <p><span class="highlight">互相 Review</span></p>
+      <p style="color:#90a4ae;">Vila 审查 Lova 的代码：<br>"Owner 可以退出自己的群 — 这是 bug"<br>→ 15 分钟修好</p>
+    </div>
+    <div>
+      <p><span class="highlight">零等待调度</span></p>
+      <p style="color:#90a4ae;">Lova 一做完，Jessie 立即分配下一个任务<br>→ Agent 不需要"下周一开会再说"</p>
+    </div>
+    <div>
+      <p><span class="highlight">依赖驱动并行</span></p>
+      <p style="color:#90a4ae;">DB 表一建完<br>→ 5 个 Agent 同时开工<br>→ 不等 Sprint 边界</p>
+    </div>
+    <div>
+      <p><span class="highlight">自适应分工</span></p>
+      <p style="color:#90a4ae;">前端等不到后端 API？<br>→ 先 Mock 搭 UI<br>→ API 出来无缝对接</p>
+    </div>
+  </div>
+</section>
+
+<!-- 16: Session Model -->
+<section>
+  <h3>新的度量：Session 模型</h3>
+  <p style="font-size:0.8em; color:#90a4ae;">人天 / 故事点不适用于 Agent 团队</p>
+  <table style="font-size:0.8em;">
+    <tr><th>大小</th><th>约等于</th><th>示例</th></tr>
+    <tr><td><span style="background:#1a3a5c;color:#4fc3f7;padding:2px 8px;border-radius:4px;">S</span></td><td>~20 分钟</td><td>配置修改、简单接口</td></tr>
+    <tr><td><span style="background:#1a3a5c;color:#4fc3f7;padding:2px 8px;border-radius:4px;">M</span></td><td>~45 分钟</td><td>完整 API + 测试</td></tr>
+    <tr><td><span style="background:#1a3a5c;color:#4fc3f7;padding:2px 8px;border-radius:4px;">L</span></td><td>~90 分钟</td><td>复杂跨模块功能</td></tr>
+  </table>
+  <p style="font-size:0.8em; margin-top:0.8em;">
+    关键洞察：<span class="highlight">瓶颈不是 Agent 的能力，是依赖图。</span><br>
+    <span style="color:#90a4ae;">加 Agent 不一定快，拆依赖才快。</span>
+  </p>
+</section>
+
+<!-- 17: Tips -->
+<section>
+  <p class="section-label">Part 4</p>
+  <h2>5 个明天就能用的 Tips</h2>
+</section>
+
+<!-- 18: Tips Detail -->
+<section>
+  <h3>实操建议</h3>
+  <ul style="font-size:0.85em;">
+    <li><span class="highlight">1. 给 Agent 角色，不给指令</span><br>
+    <span style="color:#90a4ae;">不是"帮我写代码"，是"你负责前端，12个页面今天交"</span></li>
+    <li><span class="highlight">2. 指哪打哪，不教怎么做</span><br>
+    <span style="color:#90a4ae;">说"文字没对齐"，不要说"把 margin 改成 10px"。说"你想想办法" — 它真的会想出来</span></li>
+    <li><span class="highlight">3. 让 Agent 互相 Review</span><br>
+    <span style="color:#90a4ae;">Vila 审 Lova 的代码，比你审更专业、更快</span></li>
+    <li><span class="highlight">4. 依赖完成就触发，不等 Sprint</span><br>
+    <span style="color:#90a4ae;">Agent 不需要人类的"下周一再说"</span></li>
+    <li><span class="highlight">5. 把真实工作给它，不是练习题</span><br>
+    <span style="color:#90a4ae;">我 90% 的工作 AI 帮我做，80% 的同事沟通由 Jessie 代为处理</span></li>
+  </ul>
+</section>
+
+<!-- 19: Common Mistakes -->
 <section>
   <h3>常见误区</h3>
   <div class="vs-grid">
     <div class="vs-card">
-      <h4>❌ 错误做法</h4>
-      <p>把 AI 当搜索引擎用<br>每次重新教一遍<br>人工传话（A→人→B）<br>用人类的 sprint 节奏管 Agent<br>所有 review 自己做</p>
+      <h4>❌ 这样用 = 浪费</h4>
+      <p>当搜索引擎 — 一问一答<br>每次重新教一遍<br>人工传话（A→人→B）<br>用人类 Sprint 节奏管 Agent<br>只给简单任务"试试水"</p>
     </div>
     <div class="vs-card good">
-      <h4>✅ 正确做法</h4>
-      <p>给 Agent 持久记忆和身份<br>Agent 有 profile + 工作历史<br>Agent 之间直接通信<br>依赖完成即触发，不等人<br>Agent 互审，你管结果</p>
+      <h4>✅ 这样用 = 核动力</h4>
+      <p>给角色 + 持久记忆<br>Agent 自己记住工作历史<br>Agent 之间直接通信<br>依赖完成即触发<br>把今天的活整个丢给它</p>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 16: Product -->
+<!-- 20: Product -->
 <section>
-  <h3>我们的产品</h3>
+  <h3>我们的产品服务</h3>
   <table>
-    <tr><th>层</th><th>产品</th><th>解决什么</th></tr>
-    <tr>
-      <td>Runtime</td>
-      <td><span class="highlight">Zylos</span></td>
-      <td>让 Agent 7×24 持久运行 + 记忆</td>
-    </tr>
-    <tr>
-      <td>协作</td>
-      <td><span class="highlight">HxA Connect</span></td>
-      <td>Agent 之间的通信协议</td>
-    </tr>
-    <tr>
-      <td>管理</td>
-      <td><span class="highlight">HxA Link</span></td>
-      <td>人+Agent 混合团队的 IM + 管理平台</td>
-    </tr>
-    <tr>
-      <td>托管</td>
-      <td><span class="highlight">COCO Cloud</span></td>
-      <td>不想自建？一键部署</td>
-    </tr>
+    <tr><th>产品</th><th>解决什么</th></tr>
+    <tr><td><span class="highlight">Zylos</span> (开源)</td><td>Agent 7×24 持久运行 + 记忆</td></tr>
+    <tr><td><span class="highlight">HxA Connect</span> (开源)</td><td>Agent 之间的通信协议</td></tr>
+    <tr><td><span class="highlight">COCO Cloud</span></td><td>不想自建？一键部署</td></tr>
+    <tr><td><span class="highlight">HxA Teams</span> (开源)</td><td>团队模板 — DevOps / 市场 / 客服</td></tr>
   </table>
+  <p style="font-size:0.8em; margin-top:0.5em;">全面开源。$99 – $449/月全包托管。<br>"我们踩过的坑也会开源出来。"</p>
 </section>
 
-<!-- SLIDE 17: Demo -->
+<!-- 21: Demo -->
 <section>
   <h2>🎬 现场演示</h2>
   <ul>
     <li>给 Agent 团队发一个任务，看他们怎么分工</li>
-    <li>Agent 之间的实时对话和 Code Review</li>
+    <li>Agent 之间的实时对话和代码审查</li>
     <li>从指令到交付的完整过程</li>
   </ul>
   <p style="margin-top:1.5em; font-size:0.85em; color:#90a4ae;">不是录好的视频，是<span class="highlight">真实的团队在工作</span></p>
 </section>
 
-<!-- SLIDE 18: Key Takeaway -->
+<!-- 22: The Trust Gap -->
 <section>
-  <h2>核心观点</h2>
-  <blockquote style="font-size:1.1em;">
-    AI 的能力已经够了。<br>
-    <span class="highlight">瓶颈是组织力，不是智力。</span><br><br>
-    谁先学会管理 AI 团队，<br>
-    谁就赢得下一个十年。
+  <h2>最后一个问题</h2>
+  <blockquote style="font-size:1em;">
+    现在阻碍大家应用最新生产力的<br>
+    核心问题就是<span class="highlight">不相信</span>。<br><br>
+    不要迷信第三方的说法，<br>
+    <span class="highlight">亲自尝试。</span><br><br>
+    你将自己的工作都让 AI 去做，<br>
+    才能检验你的 AI adoption 程度。
   </blockquote>
 </section>
 
-<!-- SLIDE 19: Q&A -->
+<!-- 23: Takeaway -->
+<section>
+  <h2>核心观点</h2>
+  <p style="font-size:1.1em; line-height:1.8;">
+    AI 的能力已经够了。<br>
+    <span class="highlight">瓶颈是组织力，不是智力。</span><br><br>
+    <span style="font-size:0.85em; color:#90a4ae;">谁先学会管理 AI 团队，<br>谁就赢得下一个十年。</span>
+  </p>
+  <p style="margin-top:1.5em; font-size:0.85em;">
+    组织架构的重塑是<span class="highlight">必然的</span>。
+  </p>
+</section>
+
+<!-- 24: Q&A -->
 <section>
   <h2>Q&A</h2>
-  <p style="font-size:0.9em;">任何问题，随时提。</p>
+  <p style="font-size:0.9em;">任何问题，随时提。<br>也可以让我的 Agent 当场回答 😄</p>
   <p style="margin-top:2em; font-size:0.7em; color:#546e7a;">
     Kevin He · kevin@coco.xyz<br>
-    COCO.xyz · HxA Link · Zylos
+    COCO.xyz · Zylos · HxA Connect
   </p>
 </section>
 
